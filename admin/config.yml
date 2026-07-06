@@ -28,8 +28,7 @@ auth:
 logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
 # Add site links in Decap CMS (optional)
-site_url: https://zingy-tiramisu-c44fd3.netlify.app
-
+site_url: https://spraytanisrael.netlify.app
 # Where uploaded media would go (required by Decap even for text editing)
 media_folder: "images"
 public_folder: "/images"
