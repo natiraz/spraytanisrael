@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Spray Tan Israel · שיזוף בהתזה — Bespoke Sunless Tanning, Dizengoff 218, Tel Aviv</title>
+<meta name="description" content="Spray Tan Israel — Tel Aviv's original bespoke spray tan atelier. Twenty years of hand-applied, undertone-matched color on Dizengoff. Brides, editorials, and anyone who refuses orange." />
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Frank+Ruhl+Libre:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     "Golden Hour" palette
+     ============================================================ */
+  :root{
+    --night:#1F1512; --cocoa:#2A1C17; --surface:#34231C;
+    --champagne:#F5E7CE; --sandlt:#E9D3AE;
+    --gold:#DCA45E; --copper:#C4763B; --blush:#E3A17C;
+    --hairline:rgba(220,164,94,.20);
+  }
+  html{ background:var(--night); scroll-behavior:smooth; }
+  body{ background:var(--night); color:var(--champagne); font-family:'Inter',sans-serif; font-weight:300; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  ::selection{ background:var(--gold); color:var(--night); }
+  .font-display{ font-family:'Cormorant Garamond',serif; }
+  .font-hebrew{ font-family:'Frank Ruhl Libre',serif; }
+
+  /* Shade spectrum + shimmer */
+  .shade-spectrum{
+    background:linear-gradient(90deg,#F3E5D3 0%,#EBD5BA 10%,#E2C5A3 20%,#D8B48D 30%,#CCA278 40%,#BE9064 50%,#AF7E52 60%,#9E6D42 70%,#8C5C34 80%,#7A4C29 90%,#663E20 100%);
+    position:relative; overflow:hidden;
+  }
+  .shade-spectrum::after{ content:""; position:absolute; inset:0; background:linear-gradient(105deg,transparent 30%,rgba(255,248,232,.55) 50%,transparent 70%); transform:translateX(-120%); animation:shimmer 5.5s ease-in-out infinite; }
+  @keyframes shimmer{ 0%,55%{transform:translateX(-120%);} 100%{transform:translateX(120%);} }
+
+  /* Animated gold ink on italic display words */
+  .ink-gold{
+    background:linear-gradient(100deg,var(--gold) 0%,var(--blush) 30%,#F0C98F 50%,var(--gold) 70%,var(--copper) 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:inkflow 9s ease-in-out infinite alternate;
+  }
+  @keyframes inkflow{ from{background-position:0% 50%;} to{background-position:100% 50%;} }
+
+  /* Hero sun orbs + ring + dust */
+  .sun-orb{ position:absolute; border-radius:9999px; pointer-events:none; }
+  .orb-a{ width:min(56vw,620px); height:min(56vw,620px); background:radial-gradient(circle at 40% 40%,rgba(246,206,140,.95) 0%,rgba(222,151,87,.75) 38%,rgba(150,80,45,.28) 62%,transparent 74%); filter:blur(6px); animation:orbdrift 16s ease-in-out infinite alternate; }
+  .orb-b{ width:min(34vw,380px); height:min(34vw,380px); background:radial-gradient(circle,rgba(227,161,124,.5) 0%,rgba(196,118,59,.22) 55%,transparent 72%); filter:blur(24px); animation:orbdrift 22s ease-in-out infinite alternate-reverse; }
+  @keyframes orbdrift{ from{transform:translate3d(0,0,0) scale(1);} to{transform:translate3d(-4%,5%,0) scale(1.07);} }
+  .orb-ring{ transform-origin:center; }
+  .dust{ position:absolute; border-radius:9999px; background:var(--gold); opacity:0; pointer-events:none; animation:float var(--dur,14s) linear infinite; animation-delay:var(--delay,0s); }
+  @keyframes float{ 0%{transform:translateY(12vh) translateX(0);opacity:0;} 12%{opacity:var(--op,.5);} 88%{opacity:var(--op,.5);} 100%{transform:translateY(-96vh) translateX(var(--sway,20px));opacity:0;} }
+
+  /* Load sequence */
+  .load-line{ display:block; overflow:hidden; }
+  .load-line > span{ display:block; transform:translateY(110%); animation:riseup 1.2s cubic-bezier(.22,1,.36,1) forwards; animation-delay:var(--load-delay,0ms); }
+  @keyframes riseup{ to{transform:translateY(0);} }
+  .load-fade{ opacity:0; animation:fadein 1.2s ease forwards; animation-delay:var(--load-delay,0ms); }
+  @keyframes fadein{ to{opacity:1;} }
+
+  /* Scroll reveals */
+  .reveal{ opacity:0; transform:translateY(2.5rem); transition:opacity 1.1s cubic-bezier(.22,1,.36,1),transform 1.1s cubic-bezier(.22,1,.36,1); transition-delay:var(--reveal-delay,0ms); will-change:opacity,transform; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+  .reveal-clip{ clip-path:inset(0 0 100% 0); transition:clip-path 1.35s cubic-bezier(.22,1,.36,1); transition-delay:var(--reveal-delay,0ms); will-change:clip-path; }
+  .reveal-clip.is-visible{ clip-path:inset(0 0 0% 0); }
+
+  /* NEW: letter-by-letter shimmer sweep for section headings */
+  .word-sweep .w{ display:inline-block; opacity:.25; transform:translateY(0.15em); transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1); transition-delay:calc(var(--i,0)*60ms); }
+  .word-sweep.is-visible .w{ opacity:1; transform:translateY(0); }
+
+  /* Buttons + micro-interactions */
+  .btn-fill{ position:relative; isolation:isolate; overflow:hidden; transition:color .7s cubic-bezier(.22,1,.36,1),border-color .7s; }
+  .btn-fill::before{ content:""; position:absolute; inset:0; z-index:-1; background:var(--gold); transform:scaleX(0); transform-origin:left center; transition:transform .7s cubic-bezier(.22,1,.36,1); }
+  .btn-fill:hover{ color:var(--night); }
+  .btn-fill:hover::before{ transform:scaleX(1); }
+  .magnetic{ transition:transform .5s cubic-bezier(.22,1,.36,1); will-change:transform; }
+  .arrow-drift{ display:inline-block; transition:transform .7s cubic-bezier(.22,1,.36,1); }
+  a:hover .arrow-drift, button:hover .arrow-drift{ transform:translateX(.6rem); }
+  .link-line{ position:relative; }
+  .link-line::after{ content:""; position:absolute; left:0; bottom:-3px; height:1px; width:100%; background:currentColor; transform:scaleX(0); transform-origin:right center; transition:transform .6s cubic-bezier(.22,1,.36,1); }
+  .link-line:hover::after{ transform:scaleX(1); transform-origin:left center; }
+
+  /* Gallery */
+  .frame{ overflow:hidden; position:relative; background:var(--surface); }
+  .frame img{ transition:transform 1.6s cubic-bezier(.22,1,.36,1),filter 1.6s; will-change:transform; display:block; }
+  .frame:hover img{ transform:scale(1.06) rotate(.6deg); filter:saturate(1.08); }
+  .frame::after{ content:""; position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 0 1px rgba(220,164,94,.18); }
+  /* NEW: light sweep across image on hover */
+  .frame::before{ content:""; position:absolute; top:0; left:-60%; width:45%; height:100%; z-index:2; pointer-events:none; background:linear-gradient(105deg,transparent,rgba(255,240,215,.28),transparent); transform:skewX(-18deg); transition:left .9s cubic-bezier(.22,1,.36,1); }
+  .frame:hover::before{ left:130%; }
+  .cap{ transition:transform .8s cubic-bezier(.22,1,.36,1),color .8s; }
+  figure:hover .cap{ transform:translateX(.5rem); color:var(--gold); }
+
+  /* Marquee */
+  @keyframes marquee{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .marquee-track{ animation:marquee 40s linear infinite; }
+
+  /* Accordion */
+  .acc-panel{ display:grid; grid-template-rows:0fr; transition:grid-template-rows .8s cubic-bezier(.22,1,.36,1); }
+  .acc-panel > div{ overflow:hidden; }
+  .acc-item[data-open="true"] .acc-panel{ grid-template-rows:1fr; }
+  .acc-icon{ transition:transform .8s cubic-bezier(.22,1,.36,1); }
+  .acc-item[data-open="true"] .acc-icon{ transform:rotate(45deg); }
+  .acc-trigger{ transition:padding-left .6s cubic-bezier(.22,1,.36,1); }
+  .acc-item[data-open="true"] .acc-trigger{ padding-left:.75rem; }
+
+  /* Progress + cursor */
+  #progress{ position:fixed; top:0; left:0; height:2px; width:0%; background:linear-gradient(90deg,var(--copper),var(--gold),var(--blush)); z-index:60; }
+  #cursor-dot{ position:fixed; top:0; left:0; z-index:9999; pointer-events:none; width:8px; height:8px; border-radius:9999px; background:var(--gold); transform:translate(-50%,-50%); transition:width .45s cubic-bezier(.22,1,.36,1),height .45s cubic-bezier(.22,1,.36,1),background-color .45s,opacity .3s; mix-blend-mode:screen; opacity:0; }
+  #cursor-dot.is-active{ width:60px; height:60px; background:var(--blush); }
+  @media (pointer:coarse){ #cursor-dot{ display:none; } }
+
+  :focus-visible{ outline:2px solid var(--gold); outline-offset:4px; }
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .reveal,.reveal-clip{ opacity:1; transform:none; clip-path:none; transition:none; }
+    .word-sweep .w{ opacity:1; transform:none; transition:none; }
+    .load-line > span{ transform:none; animation:none; }
+    .load-fade{ opacity:1; animation:none; }
+    .marquee-track,.orb-a,.orb-b,.dust,.ink-gold,.shade-spectrum::after{ animation:none; }
+    .frame img,.frame::before,.btn-fill::before,.arrow-drift,.acc-panel,.magnetic,.cap{ transition:none; }
+  }
+</style>
+
+<script>
+  tailwind.config = { theme:{ extend:{ colors:{
+    night:'#1F1512', cocoa:'#2A1C17', surface:'#34231C',
+    champagne:'#F5E7CE', sandlt:'#E9D3AE', gold:'#DCA45E', copper:'#C4763B', blush:'#E3A17C'
+  }}}}
+</script>
+</head>
+
+<body class="antialiased">
+
+<div id="progress" aria-hidden="true"></div>
+<div id="cursor-dot" aria-hidden="true"></div>
+
+<!-- HEADER -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-[color:var(--hairline)] bg-[rgba(31,21,18,0.6)] [backdrop-filter:blur(14px)] [-webkit-backdrop-filter:blur(14px)]">
+  <div class="mx-auto max-w-[90rem] px-6 md:px-12 h-[4.5rem] flex items-center justify-between">
+    <p class="flex items-baseline gap-3">
+      <span class="font-display text-[clamp(1rem,1.4vw,1.3rem)] tracking-[0.2em] text-gold">SPRAY&nbsp;TAN&nbsp;ISRAEL</span>
+      <span dir="rtl" class="font-hebrew text-[0.9rem] text-blush hidden sm:inline">שיזוף בהתזה</span>
+    </p>
+    <a data-cursor href="https://wa.me/972502922925" class="btn-fill magnetic border border-gold text-gold px-6 py-2.5 text-[0.68rem] tracking-[0.28em] uppercase">Reserve</a>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 · HERO -->
+<section class="relative h-[100svh] min-h-[660px] overflow-hidden" aria-label="Introduction">
+  <div aria-hidden="true" class="absolute inset-0">
+    <div class="sun-orb orb-a top-[-12%] right-[-10%]" data-parallax="0.12"></div>
+    <div class="sun-orb orb-b top-[24%] right-[16%]" data-parallax="0.2"></div>
+    <svg class="orb-ring absolute top-[-6%] right-[-4%] w-[min(48vw,540px)] h-[min(48vw,540px)] opacity-40" viewBox="0 0 100 100" fill="none" id="ring">
+      <circle cx="50" cy="50" r="46" stroke="#DCA45E" stroke-width="0.35" stroke-dasharray="0.6 2.4"/>
+    </svg>
+    <div id="particles" class="absolute inset-0"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(31,21,18,0.9)]"></div>
+  </div>
+
+  <div class="relative z-10 h-full mx-auto max-w-[90rem] px-6 md:px-12 flex flex-col justify-center md:items-end">
+    <div class="md:max-w-[52vw] md:text-right">
+      <p class="load-fade text-[0.7rem] tracking-[0.42em] uppercase text-gold/90 mb-7" style="--load-delay:200ms" data-cms="hero_eyebrow">Dizengoff 218 · Tel Aviv · Two decades of color</p>
+      <h1 class="font-display font-light leading-[0.95] text-[clamp(3.4rem,10vw,9rem)] text-champagne">
+        <span class="load-line"><span style="--load-delay:350ms">Golden hour,</span></span>
+        <span class="load-line"><span style="--load-delay:550ms"><em class="italic ink-gold">any hour.</em></span></span>
+      </h1>
+      <p class="load-fade mt-8 md:ml-auto max-w-[40ch] text-[clamp(0.95rem,1.2vw,1.1rem)] leading-relaxed text-champagne/85" style="--load-delay:850ms" data-cms="hero_sub">Bespoke, hand-applied color — mixed to your undertone, never to a formula. Worn by brides, editorials, and anyone who refuses orange.</p>
+      <div class="load-fade mt-10 flex flex-wrap md:justify-end items-center gap-6" style="--load-delay:1050ms">
+        <a data-cursor href="https://wa.me/972502922925" class="btn-fill magnetic border border-gold text-gold px-9 py-4 text-[0.72rem] tracking-[0.3em] uppercase">Reserve your shade <span class="arrow-drift ml-2" aria-hidden="true">→</span></a>
+        <a data-cursor href="tel:+972502922925" class="link-line text-champagne/80 text-[0.72rem] tracking-[0.3em] uppercase">050-292-2925</a>
+      </div>
+    </div>
+  </div>
+
+  <div aria-hidden="true" class="load-fade absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-champagne/50" style="--load-delay:1400ms">
+    <span class="text-[0.62rem] tracking-[0.4em] uppercase">Scroll</span>
+    <span class="block w-px h-12 bg-gradient-to-b from-gold/70 to-transparent"></span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="border-y border-[color:var(--hairline)] py-5 overflow-hidden bg-cocoa/60" aria-hidden="true">
+  <div class="marquee-track flex whitespace-nowrap w-max">
+    <span class="flex items-center gap-10 pr-10 text-[0.7rem] tracking-[0.42em] uppercase text-gold/80">Never orange <i class="not-italic text-blush">◦</i> שיזוף בהתזה <i class="not-italic text-blush">◦</i> Dizengoff 218 <i class="not-italic text-blush">◦</i> Imported premium solutions <i class="not-italic text-blush">◦</i> By appointment, always <i class="not-italic text-blush">◦</i> Never orange <i class="not-italic text-blush">◦</i> שיזוף בהתזה <i class="not-italic text-blush">◦</i> Dizengoff 218 <i class="not-italic text-blush">◦</i> Imported premium solutions <i class="not-italic text-blush">◦</i> By appointment, always <i class="not-italic text-blush">◦</i></span>
+    <span class="flex items-center gap-10 pr-10 text-[0.7rem] tracking-[0.42em] uppercase text-gold/80">Never orange <i class="not-italic text-blush">◦</i> שיזוף בהתזה <i class="not-italic text-blush">◦</i> Dizengoff 218 <i class="not-italic text-blush">◦</i> Imported premium solutions <i class="not-italic text-blush">◦</i> By appointment, always <i class="not-italic text-blush">◦</i> Never orange <i class="not-italic text-blush">◦</i> שיזוף בהתזה <i class="not-italic text-blush">◦</i> Dizengoff 218 <i class="not-italic text-blush">◦</i> Imported premium solutions <i class="not-italic text-blush">◦</i> By appointment, always <i class="not-italic text-blush">◦</i></span>
+  </div>
+</div>
+
+<!-- 02 · PHILOSOPHY -->
+<section class="relative mx-auto max-w-[90rem] px-6 md:px-12 pt-[16vh] pb-[10vh]" aria-labelledby="philosophy-title">
+  <div class="grid grid-cols-12 gap-y-16 md:gap-x-10 items-start">
+    <div class="col-span-12 md:col-span-3 reveal">
+      <p class="text-[0.68rem] tracking-[0.42em] uppercase text-blush">The Philosophy</p>
+      <p dir="rtl" class="font-hebrew mt-2 text-[0.95rem] text-gold/70">הפילוסופיה</p>
+    </div>
+    <div class="col-span-12 md:col-span-8 md:col-start-4">
+      <h2 id="philosophy-title" class="word-sweep font-display font-light leading-[1.05] text-champagne text-[clamp(2.2rem,4.6vw,4.4rem)] max-w-[20ch]">
+        We don't spray tans. We <em class="italic ink-gold">compose</em> them.
+      </h2>
+      <div class="mt-12 grid grid-cols-12 gap-y-10 md:gap-x-10">
+        <p class="reveal col-span-12 md:col-span-6 text-[1.02rem] leading-[1.9] text-champagne/80" style="--reveal-delay:120ms" data-cms="philo_p1">Every skin carries its own light — an undertone of olive, rose, or gold that decides how color will live on it. For twenty years, we have read that light before touching a single drop of solution. The result is a shade that exists exactly once: yours.</p>
+        <p class="reveal col-span-12 md:col-span-6 text-[1.02rem] leading-[1.9] text-champagne/80" style="--reveal-delay:260ms" data-cms="philo_p2">Our solutions are imported, skin-safe, and blended by hand in the studio on Dizengoff. Applied with contouring technique refined over hundreds of brides, editorial shoots, and stage appearances — color that photographs like a week in Mykonos and fades like a memory, evenly and without apology.</p>
+      </div>
+      <dl class="reveal mt-16 grid grid-cols-3 gap-6 border-y border-[color:var(--hairline)] py-8" style="--reveal-delay:320ms">
+        <div><dd class="font-display text-[clamp(2.4rem,4vw,3.6rem)] leading-none text-gold"><span class="count" data-target="20">0</span></dd><dt class="mt-2 text-[0.62rem] tracking-[0.32em] uppercase text-champagne/60">Years of color</dt></div>
+        <div><dd class="font-display text-[clamp(2.4rem,4vw,3.6rem)] leading-none text-gold"><span class="count" data-target="12">0</span></dd><dt class="mt-2 text-[0.62rem] tracking-[0.32em] uppercase text-champagne/60">Base tones</dt></div>
+        <div><dd class="font-display text-[clamp(2.4rem,4vw,3.6rem)] leading-none text-gold"><span class="count" data-target="100">0</span>s</dd><dt class="mt-2 text-[0.62rem] tracking-[0.32em] uppercase text-champagne/60">Brides, never orange</dt></div>
+      </dl>
+      <figure class="reveal mt-14" style="--reveal-delay:420ms" role="img" aria-label="Gradient bar of the twelve base tones, porcelain to espresso">
+        <div class="shade-spectrum h-[6px] w-full"></div>
+        <figcaption class="mt-4 flex justify-between text-[0.62rem] tracking-[0.3em] uppercase text-champagne/55"><span>01 · Porcelain</span><span class="hidden sm:inline">06 · Dune</span><span>12 · Espresso</span></figcaption>
+        <p class="mt-3 font-display italic text-gold/85 text-[1.05rem]">Twelve base tones. Infinite blends. One is already yours.</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · GALLERY -->
+<section class="relative mx-auto max-w-[90rem] px-6 md:px-12 py-[10vh]" aria-labelledby="gallery-title">
+  <div class="flex items-end justify-between mb-14">
+    <h2 id="gallery-title" class="reveal font-display font-light text-champagne leading-none text-[clamp(2.2rem,5vw,4.6rem)]">The <em class="italic ink-gold">work</em></h2>
+    <a data-cursor href="https://instagram.com/spraytanisrael" rel="noopener" class="reveal link-line hidden sm:inline text-[0.7rem] tracking-[0.3em] uppercase text-blush" style="--reveal-delay:150ms">@spraytanisrael <span class="arrow-drift" aria-hidden="true">→</span></a>
+  </div>
+  <div class="grid grid-cols-12 gap-y-14 md:gap-x-8">
+    <figure class="col-span-12 sm:col-span-6 md:col-span-4 md:mt-[10vh]" data-parallax="0.05">
+      <div data-cursor class="frame reveal-clip aspect-[4/5]">
+        <img src="images/bride.jpg" alt="Client with a luminous, even golden tan" class="h-full w-full object-cover" />
+      </div>
+      <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55">Bridal glow · Shade 05</figcaption>
+    </figure>
+    <figure class="col-span-12 sm:col-span-6 md:col-span-4 md:-mt-[6vh]" data-parallax="-0.045">
+      <div data-cursor class="frame reveal-clip aspect-[3/4]" style="--reveal-delay:140ms">
+        <img src="images/man.jpg" alt="Man with a warm bronze tan in an open cream shirt" class="h-full w-full object-cover" />
+      </div>
+      <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55">Men's contour · Shade 08</figcaption>
+    </figure>
+    <figure class="col-span-12 sm:col-span-6 md:col-span-4 md:mt-[18vh]" data-parallax="0.06">
+      <div data-cursor class="frame reveal-clip aspect-[4/5]" style="--reveal-delay:280ms">
+        <img src="images/expr.jpg" alt="Client in a pale green dress with a luminous even tan" class="h-full w-full object-cover" />
+      </div>
+      <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55">Two-minute express · בשתי דקות</figcaption>
+    </figure>
+
+    <div class="col-span-12 md:col-span-7 md:mt-[8vh] self-center" data-parallax="0.035">
+      <div class="reveal border-y border-[color:var(--hairline)] py-10">
+        <p class="text-[0.62rem] tracking-[0.4em] uppercase text-blush mb-8">The Ritual · from door to glow</p>
+        <ol class="grid sm:grid-cols-3 gap-8">
+          <li class="reveal" style="--reveal-delay:100ms"><p class="font-display text-[clamp(2rem,3vw,2.8rem)] leading-none text-gold" aria-hidden="true">01</p><h3 class="mt-3 font-display text-[1.25rem] text-champagne">Consult</h3><p class="mt-2 text-[0.85rem] leading-relaxed text-champagne/70">Ten minutes on your undertone, your occasion, and how deep you want to go.</p></li>
+          <li class="reveal" style="--reveal-delay:220ms"><p class="font-display text-[clamp(2rem,3vw,2.8rem)] leading-none text-gold" aria-hidden="true">02</p><h3 class="mt-3 font-display text-[1.25rem] text-champagne">Blend</h3><p class="mt-2 text-[0.85rem] leading-relaxed text-champagne/70">Your solution is mixed by hand from twelve base tones — a recipe we note, keep, and repeat.</p></li>
+          <li class="reveal" style="--reveal-delay:340ms"><p class="font-display text-[clamp(2rem,3vw,2.8rem)] leading-none text-gold" aria-hidden="true">03</p><h3 class="mt-3 font-display text-[1.25rem] text-champagne">Glow</h3><p class="mt-2 text-[0.85rem] leading-relaxed text-champagne/70">Hand-applied contour in minutes. Develops in eight hours; lives beautifully for up to ten days.</p></li>
+        </ol>
+      </div>
+    </div>
+
+    <blockquote class="reveal col-span-12 md:col-span-4 md:col-start-9 self-center md:mt-[8vh]" data-parallax="-0.05" style="--reveal-delay:200ms">
+      <p class="font-display italic font-light leading-[1.25] text-[clamp(1.6rem,2.6vw,2.3rem)] text-champagne">“Twenty years, hundreds of brides, and not a single <span class="ink-gold not-italic font-normal">orange</span> one.”</p>
+      <footer class="mt-5 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55">— The atelier, Dizengoff 218</footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- 04 · INVESTMENT -->
+<section class="relative py-[14vh] bg-cocoa/70" aria-labelledby="investment-title">
+  <div aria-hidden="true" class="shade-spectrum absolute inset-x-0 top-0 h-[2px] opacity-70"></div>
+  <div class="mx-auto max-w-[90rem] px-6 md:px-12">
+    <div class="grid grid-cols-12 gap-y-12 md:gap-x-10">
+      <div class="col-span-12 md:col-span-4">
+        <p class="reveal text-[0.68rem] tracking-[0.42em] uppercase text-blush">The Investment</p>
+        <h2 id="investment-title" class="reveal font-display font-light leading-[1.05] mt-4 text-[clamp(2.2rem,4.4vw,4rem)] text-champagne" style="--reveal-delay:120ms">Color is a <em class="italic ink-gold">craft.</em><br/>Priced like one.</h2>
+        <p class="reveal mt-8 max-w-[34ch] text-[0.98rem] leading-[1.9] text-champagne/75" style="--reveal-delay:240ms">Every appointment includes undertone consultation, a hand-blended solution, and contour application. Nothing off the shelf ever touches your skin.</p>
+      </div>
+      <div class="col-span-12 md:col-span-7 md:col-start-6">
+        <ul class="divide-y divide-[color:var(--hairline)]">
+          <!-- NOTE: adjust prices to your current rate card -->
+          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc1_name">The Signature Glow</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc1_desc">Full-body bespoke color, matched to your undertone and calendar. Develops in 8 hours; lives beautifully for up to 10 days.</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc1_price">₪ 350</p></li>
+          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline" style="--reveal-delay:100ms"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc2_name">The Bridal Protocol</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc2_desc">A trial session weeks before, a perfected shade the week of. Photographs flawlessly in white — under chuppah light, flash, and Mediterranean sun alike.</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc2_price">₪ 750</p></li>
+          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline" style="--reveal-delay:200ms"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc3_name">The Two-Minute Express</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc3_desc">שיזוף בשתי דקות. Rapid contour color for the dinner, the date, the flight tomorrow. In and out — glowing — before your espresso cools.</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc3_price">₪ 250</p></li>
+          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline" style="--reveal-delay:300ms"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc4_name">Lash Lift &amp; Tint</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc4_desc">The finishing gesture. Lifted, tinted lashes that frame the glow — no mascara, no maintenance, six weeks of ease.</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc4_price">₪ 280</p></li>
+          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline" style="--reveal-delay:400ms"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc5_name">The Editorial</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc5_desc">Camera-calibrated color for shoots, stage, and screen. Trusted by celebrities and productions across Tel Aviv. On location by arrangement.</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc5_price">By quote</p></li>
+        </ul>
+        <a data-cursor href="https://wa.me/972502922925" class="reveal btn-fill magnetic mt-12 inline-flex items-center border border-gold text-gold px-9 py-4 text-[0.72rem] tracking-[0.3em] uppercase" style="--reveal-delay:500ms">Book a consultation <span class="arrow-drift ml-2" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · PROTOCOL -->
+<section class="relative mx-auto max-w-[90rem] px-6 md:px-12 py-[14vh]" aria-labelledby="protocol-title">
+  <div class="grid grid-cols-12 gap-y-12 md:gap-x-10">
+    <div class="col-span-12 md:col-span-4">
+      <p class="reveal text-[0.68rem] tracking-[0.42em] uppercase text-blush">The Protocol</p>
+      <h2 id="protocol-title" class="reveal font-display font-light leading-[1.05] mt-4 text-[clamp(2.2rem,4.4vw,4rem)] text-champagne" style="--reveal-delay:120ms">Great color is a <em class="italic ink-gold">collaboration.</em></h2>
+      <p class="reveal mt-8 max-w-[34ch] text-[0.98rem] leading-[1.9] text-champagne/75" style="--reveal-delay:240ms">A few quiet rituals before and after your session decide how evenly your shade develops — and how gracefully it leaves.</p>
+      <div class="reveal shade-spectrum h-[4px] w-24 mt-10" style="--reveal-delay:360ms" aria-hidden="true"></div>
+    </div>
+    <div class="col-span-12 md:col-span-7 md:col-start-6">
+      <div id="accordion" class="divide-y divide-[color:var(--hairline)] border-y border-[color:var(--hairline)]">
+        <div class="acc-item reveal" data-open="true"><h3><button data-cursor type="button" class="acc-trigger w-full flex items-center justify-between gap-6 py-7 text-left" aria-expanded="true" aria-controls="panel-1" id="trigger-1"><span class="font-display text-[clamp(1.3rem,1.8vw,1.7rem)] text-champagne" data-cms="pro1_title">48 hours before</span><span class="acc-icon text-gold text-xl leading-none" aria-hidden="true">＋</span></button></h3><div class="acc-panel" id="panel-1" role="region" aria-labelledby="trigger-1"><div><p class="pb-8 pr-4 text-[0.95rem] leading-[1.9] text-champagne/75 max-w-[58ch]" data-cms="pro1_body">Complete any waxing or shaving now, so pores can settle. Exfoliate gently the day before — polished skin takes color like fresh canvas takes paint. Then leave your skin alone: no oils, no self-tanner remnants, nothing that competes.</p></div></div></div>
+        <div class="acc-item reveal" data-open="false" style="--reveal-delay:100ms"><h3><button data-cursor type="button" class="acc-trigger w-full flex items-center justify-between gap-6 py-7 text-left" aria-expanded="false" aria-controls="panel-2" id="trigger-2"><span class="font-display text-[clamp(1.3rem,1.8vw,1.7rem)] text-champagne" data-cms="pro2_title">The day of</span><span class="acc-icon text-gold text-xl leading-none" aria-hidden="true">＋</span></button></h3><div class="acc-panel" id="panel-2" role="region" aria-labelledby="trigger-2"><div><p class="pb-8 pr-4 text-[0.95rem] leading-[1.9] text-champagne/75 max-w-[58ch]" data-cms="pro2_body">Arrive with bare skin — no moisturizer, deodorant, perfume, or makeup on the areas being tanned. Bring loose, dark clothing and open shoes for the journey home. The solution needs room to breathe; so do you.</p></div></div></div>
+        <div class="acc-item reveal" data-open="false" style="--reveal-delay:200ms"><h3><button data-cursor type="button" class="acc-trigger w-full flex items-center justify-between gap-6 py-7 text-left" aria-expanded="false" aria-controls="panel-3" id="trigger-3"><span class="font-display text-[clamp(1.3rem,1.8vw,1.7rem)] text-champagne" data-cms="pro3_title">The first 8 hours</span><span class="acc-icon text-gold text-xl leading-none" aria-hidden="true">＋</span></button></h3><div class="acc-panel" id="panel-3" role="region" aria-labelledby="trigger-3"><div><p class="pb-8 pr-4 text-[0.95rem] leading-[1.9] text-champagne/75 max-w-[58ch]" data-cms="pro3_body">This is when your shade develops — treat it like wet varnish. No water, no sweat, no tight straps. When the time is up, rinse in lukewarm water without soap and pat, never rub, yourself dry. What emerges is the color we composed together.</p></div></div></div>
+        <div class="acc-item reveal" data-open="false" style="--reveal-delay:300ms"><h3><button data-cursor type="button" class="acc-trigger w-full flex items-center justify-between gap-6 py-7 text-left" aria-expanded="false" aria-controls="panel-4" id="trigger-4"><span class="font-display text-[clamp(1.3rem,1.8vw,1.7rem)] text-champagne" data-cms="pro4_title">The days after</span><span class="acc-icon text-gold text-xl leading-none" aria-hidden="true">＋</span></button></h3><div class="acc-panel" id="panel-4" role="region" aria-labelledby="trigger-4"><div><p class="pb-8 pr-4 text-[0.95rem] leading-[1.9] text-champagne/75 max-w-[58ch]" data-cms="pro4_body">Moisturize morning and night — hydrated skin holds color longest. Keep showers short and lukewarm, and give pools and long sea swims a few days' grace. Cared for this way, your glow retires slowly, evenly, and entirely on its own terms.</p></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · CTA + FOOTER -->
+<section class="relative overflow-hidden bg-[#191008] text-champagne" aria-labelledby="cta-title">
+  <div aria-hidden="true" class="shade-spectrum absolute inset-x-0 top-0 h-[3px] opacity-80"></div>
+  <div aria-hidden="true" class="sun-orb orb-b bottom-[-16%] left-[8%]"></div>
+  <div class="relative mx-auto max-w-[90rem] px-6 md:px-12 pt-[14vh] pb-16">
+    <p class="reveal text-[0.68rem] tracking-[0.42em] uppercase text-blush">By appointment · Dizengoff 218</p>
+    <h2 id="cta-title" class="reveal font-display font-light leading-[1] mt-6 text-[clamp(2.6rem,7vw,6.5rem)] max-w-[16ch]" style="--reveal-delay:150ms">Your shade is already <em class="italic ink-gold">waiting.</em></h2>
+    <div class="reveal mt-12 flex flex-wrap items-center gap-6" style="--reveal-delay:300ms">
+      <a data-cursor href="https://wa.me/972502922925" class="btn-fill magnetic border border-gold text-gold px-10 py-5 text-[0.74rem] tracking-[0.3em] uppercase">WhatsApp the studio <span class="arrow-drift ml-2" aria-hidden="true">→</span></a>
+      <a data-cursor href="tel:+972502922925" class="link-line text-[0.74rem] tracking-[0.3em] uppercase text-champagne/85">050-292-2925</a>
+    </div>
+    <footer class="mt-[12vh] border-t border-champagne/15 pt-12 grid grid-cols-12 gap-y-10 md:gap-x-10 text-[0.82rem] leading-relaxed">
+      <div class="col-span-12 md:col-span-4"><p class="font-display text-[1.3rem] tracking-[0.2em] text-champagne">SPRAY&nbsp;TAN&nbsp;ISRAEL</p><p dir="rtl" class="font-hebrew mt-1 text-gold">שיזוף בהתזה</p><p class="mt-5 max-w-[36ch] text-champagne/60" data-cms="footer_tagline">Tel Aviv's original bespoke tanning atelier. Twenty years. Never orange.</p></div>
+      <div class="col-span-6 md:col-span-3 md:col-start-6"><p class="text-[0.64rem] tracking-[0.36em] uppercase text-gold mb-4">Visit</p><address class="not-italic text-champagne/75">218 Dizengoff Street<br/>Tel Aviv, Israel<br/><span class="text-champagne/50">Open always — by appointment</span></address></div>
+      <div class="col-span-6 md:col-span-3 md:col-start-10"><p class="text-[0.64rem] tracking-[0.36em] uppercase text-gold mb-4">Connect</p><ul class="space-y-2 text-champagne/75"><li><a data-cursor class="link-line" href="https://instagram.com/spraytanisrael" rel="noopener">Instagram · @spraytanisrael</a></li><li><a data-cursor class="link-line" href="https://wa.me/972502922925">WhatsApp · +972 50-292-2925</a></li><li><a data-cursor class="link-line" href="mailto:spraytanisrael@gmail.com">spraytanisrael@gmail.com</a></li></ul></div>
+      <p class="col-span-12 mt-8 text-[0.66rem] tracking-[0.28em] uppercase text-champagne/40">© <span id="year">2026</span> Spray Tan Israel · Dizengoff 218, Tel Aviv</p>
+    </footer>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  'use strict';
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Split word-sweep headings into spans
+  document.querySelectorAll('.word-sweep').forEach(h => {
+    const html = h.innerHTML;
+    // wrap plain text words but keep inner <em> intact
+    const tmp = document.createElement('div'); tmp.innerHTML = html;
+    let i = 0;
+    function wrap(node){
+      node.childNodes.forEach(child => {
+        if (child.nodeType === 3){
+          const frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(tok => {
+            if (tok.trim().length){
+              const s = document.createElement('span'); s.className='w'; s.style.setProperty('--i', i++); s.textContent = tok; frag.appendChild(s);
+            } else { frag.appendChild(document.createTextNode(tok)); }
+          });
+          child.replaceWith(frag);
+        } else if (child.nodeType === 1){
+          const s = document.createElement('span'); s.className='w'; s.style.setProperty('--i', i++);
+          child.parentNode.insertBefore(s, child); s.appendChild(child);
+        }
+      });
+    }
+    wrap(tmp);
+    h.innerHTML = tmp.innerHTML;
+  });
+
+  // 1. Reveals (fade-up, clip-wipe, word-sweep)
+  const revealEls = document.querySelectorAll('.reveal, .reveal-clip, .word-sweep');
+  if ('IntersectionObserver' in window && !prefersReduced){
+    const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target);} }); }, { threshold:0.12, rootMargin:'0px 0px -6% 0px' });
+    revealEls.forEach(el=>io.observe(el));
+  } else { revealEls.forEach(el=>el.classList.add('is-visible')); }
+
+  // 2. Counters
+  const counters = document.querySelectorAll('.count');
+  if ('IntersectionObserver' in window && counters.length){
+    const cio = new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(!entry.isIntersecting) return; const el=entry.target; const target=parseInt(el.dataset.target,10)||0; if(prefersReduced){el.textContent=target;cio.unobserve(el);return;} const dur=1400,t0=performance.now(); (function tick(now){ const p=Math.min((now-t0)/dur,1); const eased=1-Math.pow(1-p,3); el.textContent=Math.round(eased*target); if(p<1) requestAnimationFrame(tick); })(t0); cio.unobserve(el); }); }, { threshold:0.6 });
+    counters.forEach(el=>cio.observe(el));
+  }
+
+  // 3. Parallax + ring + progress
+  const pxEls = Array.from(document.querySelectorAll('[data-parallax]'));
+  const ring = document.getElementById('ring');
+  const progress = document.getElementById('progress');
+  let ticking=false;
+  function onScroll(){ if(ticking) return; ticking=true; requestAnimationFrame(()=>{ const vh=window.innerHeight, sy=window.scrollY; if(!prefersReduced){ pxEls.forEach(el=>{ const r=el.getBoundingClientRect(); const mid=r.top+r.height/2-vh/2; const speed=parseFloat(el.dataset.parallax)||0; el.style.transform='translate3d(0,'+(-mid*speed).toFixed(1)+'px,0)'; }); if(ring) ring.style.transform='rotate('+(sy*0.04).toFixed(2)+'deg)'; } if(progress){ const max=document.documentElement.scrollHeight-vh; progress.style.width=(max>0?(sy/max)*100:0)+'%'; } ticking=false; }); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  onScroll();
+
+  // 4. Dust particles
+  const holder = document.getElementById('particles');
+  if (holder && !prefersReduced){
+    for (let i=0;i<16;i++){ const d=document.createElement('span'); d.className='dust'; const size=2+Math.random()*3; d.style.width=size+'px'; d.style.height=size+'px'; d.style.left=(Math.random()*100)+'%'; d.style.bottom='-4vh'; d.style.setProperty('--dur',(11+Math.random()*14)+'s'); d.style.setProperty('--delay',(Math.random()*-22)+'s'); d.style.setProperty('--sway',((Math.random()-0.5)*90)+'px'); d.style.setProperty('--op',(0.25+Math.random()*0.4).toFixed(2)); holder.appendChild(d);} }
+
+  // 5. Magnetic buttons
+  if (window.matchMedia('(pointer: fine)').matches && !prefersReduced){
+    document.querySelectorAll('.magnetic').forEach(el=>{ el.addEventListener('mousemove',e=>{ const r=el.getBoundingClientRect(); const x=e.clientX-(r.left+r.width/2); const y=e.clientY-(r.top+r.height/2); el.style.transform='translate('+(x*0.18).toFixed(1)+'px,'+(y*0.28).toFixed(1)+'px)'; }); el.addEventListener('mouseleave',()=>{ el.style.transform='translate(0,0)'; }); });
+  }
+
+  // 6. Accordion
+  const items = document.querySelectorAll('.acc-item');
+  items.forEach(item=>{ const trigger=item.querySelector('.acc-trigger'); trigger.addEventListener('click',()=>{ const isOpen=item.dataset.open==='true'; items.forEach(o=>{ o.dataset.open='false'; o.querySelector('.acc-trigger').setAttribute('aria-expanded','false'); }); if(!isOpen){ item.dataset.open='true'; trigger.setAttribute('aria-expanded','true'); } }); });
+
+  // 7. Custom cursor
+  const dot = document.getElementById('cursor-dot');
+  if (dot && window.matchMedia('(pointer: fine)').matches && !prefersReduced){
+    let mx=-100,my=-100,cx=-100,cy=-100,shown=false;
+    document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; if(!shown){ dot.style.opacity='1'; shown=true; } }, {passive:true});
+    (function loop(){ cx+=(mx-cx)*0.18; cy+=(my-cy)*0.18; dot.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)'; requestAnimationFrame(loop); })();
+    document.querySelectorAll('[data-cursor]').forEach(el=>{ el.addEventListener('mouseenter',()=>dot.classList.add('is-active')); el.addEventListener('mouseleave',()=>dot.classList.remove('is-active')); });
+  }
+
+  // 8. Year
+  const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+})();
+</script>
+
+<script>
+/* CMS content loader — overwrites default text from content.json if present.
+   If the file is missing or fails, the hardcoded text remains (site never breaks). */
+(function(){
+  fetch('content.json?v=' + Date.now()).then(function(r){ return r.ok ? r.json() : null; }).then(function(data){
+    if(!data) return;
+    document.querySelectorAll('[data-cms]').forEach(function(el){
+      var k = el.getAttribute('data-cms');
+      if(data[k] !== undefined && data[k] !== null && String(data[k]).length){ el.textContent = data[k]; }
+    });
+  }).catch(function(){ /* keep fallback text */ });
+})();
+</script>
+
+</body>
+</html>

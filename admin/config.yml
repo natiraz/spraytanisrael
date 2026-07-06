@@ -1,0 +1,62 @@
+# ============================================================
+#  Decap CMS configuration — Spray Tan Israel
+#  The "backend" block below is a PLACEHOLDER. We finish it in
+#  Stage 4 using the values DecapBridge gives us. Do not edit
+#  the fields section unless you want to change what's editable.
+# ============================================================
+
+backend:
+  name: git-gateway
+  branch: main
+  # --- these two lines get filled in during Stage 4 (DecapBridge) ---
+  # identity_url: https://auth.decapbridge.com/sites/YOUR-SITE-ID
+  # gateway_url: https://gateway.decapbridge.com
+
+# Where uploaded media would go (not used for text editing, but required)
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "content"
+    label: "Website Text"
+    files:
+      - name: "site"
+        label: "Edit Website Text"
+        file: "content.json"
+        fields:
+          - { label: "Hero — small line above headline", name: "hero_eyebrow", widget: "string" }
+          - { label: "Hero — paragraph under headline", name: "hero_sub", widget: "text" }
+
+          - { label: "Philosophy — first paragraph", name: "philo_p1", widget: "text" }
+          - { label: "Philosophy — second paragraph", name: "philo_p2", widget: "text" }
+
+          - { label: "Service 1 — name", name: "svc1_name", widget: "string" }
+          - { label: "Service 1 — description", name: "svc1_desc", widget: "text" }
+          - { label: "Service 1 — price", name: "svc1_price", widget: "string" }
+
+          - { label: "Service 2 — name", name: "svc2_name", widget: "string" }
+          - { label: "Service 2 — description", name: "svc2_desc", widget: "text" }
+          - { label: "Service 2 — price", name: "svc2_price", widget: "string" }
+
+          - { label: "Service 3 — name", name: "svc3_name", widget: "string" }
+          - { label: "Service 3 — description", name: "svc3_desc", widget: "text" }
+          - { label: "Service 3 — price", name: "svc3_price", widget: "string" }
+
+          - { label: "Service 4 — name", name: "svc4_name", widget: "string" }
+          - { label: "Service 4 — description", name: "svc4_desc", widget: "text" }
+          - { label: "Service 4 — price", name: "svc4_price", widget: "string" }
+
+          - { label: "Service 5 — name", name: "svc5_name", widget: "string" }
+          - { label: "Service 5 — description", name: "svc5_desc", widget: "text" }
+          - { label: "Service 5 — price", name: "svc5_price", widget: "string" }
+
+          - { label: "Protocol 1 — title", name: "pro1_title", widget: "string" }
+          - { label: "Protocol 1 — text", name: "pro1_body", widget: "text" }
+          - { label: "Protocol 2 — title", name: "pro2_title", widget: "string" }
+          - { label: "Protocol 2 — text", name: "pro2_body", widget: "text" }
+          - { label: "Protocol 3 — title", name: "pro3_title", widget: "string" }
+          - { label: "Protocol 3 — text", name: "pro3_body", widget: "text" }
+          - { label: "Protocol 4 — title", name: "pro4_title", widget: "string" }
+          - { label: "Protocol 4 — text", name: "pro4_body", widget: "text" }
+
+          - { label: "Footer — tagline", name: "footer_tagline", widget: "text" }
