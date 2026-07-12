@@ -89,12 +89,22 @@ collections:
           # ---------- GALLERY ----------
           - { label: "GALLERY — Headline", name: "gallery_heading", widget: "string", hint: "Put *asterisks* around any word you want in gold italic." }
           - { label: "GALLERY — Instagram link text", name: "gallery_ig_label", widget: "string" }
-          - { label: "GALLERY — Photo 1 caption", name: "gal1_caption", widget: "string" }
-          - { label: "GALLERY — Photo 1 description (for Google & screen readers)", name: "gal1_alt", widget: "string" }
-          - { label: "GALLERY — Photo 2 caption", name: "gal2_caption", widget: "string" }
-          - { label: "GALLERY — Photo 2 description (for Google & screen readers)", name: "gal2_alt", widget: "string" }
-          - { label: "GALLERY — Photo 3 caption", name: "gal3_caption", widget: "string" }
-          - { label: "GALLERY — Photo 3 description (for Google & screen readers)", name: "gal3_alt", widget: "string" }
+          - label: "GALLERY — Photos"
+            name: "gallery_items"
+            widget: "list"
+            label_singular: "Photo"
+            summary: "{{fields.caption}}"
+            hint: "Add as many photos as you like. Drag to reorder — the page lays them out automatically. Please resize photos to about 1200px wide before uploading; straight-from-the-phone photos are huge and will make the site slow."
+            fields:
+              - { label: "Photo", name: "image", widget: "image" }
+              - { label: "Caption underneath", name: "caption", widget: "string", required: false }
+              - { label: "Photo description (for Google & screen readers)", name: "alt", widget: "string", required: false, hint: "Describe the photo in a few words. Helps Google and blind visitors." }
+
+          # ---------- VIDEO (optional — leave empty to hide it) ----------
+          - { label: "VIDEO — Upload a video file", name: "video_file", widget: "file", required: false, hint: "An MP4. Keep it under about 20MB. If you paste a YouTube link below instead, that wins — use one or the other, not both." }
+          - { label: "VIDEO — Or paste a YouTube / Vimeo link", name: "video_url", widget: "string", required: false, hint: "Recommended for anything longer than a few seconds — it keeps the site fast." }
+          - { label: "VIDEO — Cover image (shown before it plays)", name: "video_poster", widget: "image", required: false, hint: "Only used with an uploaded file." }
+          - { label: "VIDEO — Caption underneath", name: "video_caption", widget: "string", required: false }
 
           # ---------- THE RITUAL (three steps) ----------
           - { label: "RITUAL — Small label", name: "ritual_eyebrow", widget: "string" }
