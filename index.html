@@ -80,6 +80,12 @@
   .link-line::after{ content:""; position:absolute; left:0; bottom:-3px; height:1px; width:100%; background:currentColor; transform:scaleX(0); transform-origin:right center; transition:transform .6s cubic-bezier(.22,1,.36,1); }
   .link-line:hover::after{ transform:scaleX(1); transform-origin:left center; }
 
+  /* The gallery + video wrappers must dissolve into the parent grid, so their
+     children become grid items. This duplicates Tailwind's `contents` class on
+     purpose: the layout collapses into a narrow column without it, so it must
+     not depend on a utility class surviving a future CSS rebuild. */
+  #gallery-grid, #video-slot{ display:contents; }
+
   /* Gallery */
   .frame{ overflow:hidden; position:relative; background:var(--surface); }
   .frame img{ transition:transform 1.6s cubic-bezier(.22,1,.36,1),filter 1.6s; will-change:transform; display:block; }
