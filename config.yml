@@ -1,0 +1,178 @@
+# Use DecapBridge PKCE auth (required)
+backend:
+  name: git-gateway
+  repo: natiraz/spraytanisrael
+  branch: main
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/7baa6dc0-bd33-4b42-b3a0-127d49f7352b/pkce
+  auth_token_endpoint: /sites/7baa6dc0-bd33-4b42-b3a0-127d49f7352b/token
+  gateway_url: https://gateway.decapbridge.com
+  # See who did what (optional)
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    update: 'Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    delete: 'Delete {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    uploadMedia: 'Upload "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    deleteMedia: 'Delete "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    openAuthoring: 'Message {{message}} - {{author-name}} <{{author-login}}> via DecapBridge'
+
+# Enable PKCE fields (optional, recommended)
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
+
+# Better Decap + Bridge logo (optional)
+logo_url: https://decapbridge.com/decapcms-with-bridge.svg
+
+# Add site links in Decap CMS (optional)
+site_url: https://spraytantelaviv.com
+# Where uploaded media would go (required by Decap even for text editing)
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "content"
+    label: "Website Text"
+    files:
+      - name: "site"
+        label: "Edit Website Text"
+        file: "content.json"
+        fields:
+
+          # ---------- HEADER & BRAND ----------
+          - { label: "HEADER — Studio name", name: "brand_name", widget: "string" }
+          - { label: "HEADER — Studio name in Hebrew", name: "brand_hebrew", widget: "string" }
+          - { label: "HEADER — Button (top right)", name: "nav_button", widget: "string" }
+
+          # ---------- HERO (first screen) ----------
+          - { label: "HERO — Small line above the big headline", name: "hero_eyebrow", widget: "string" }
+          - { label: "HERO — Big headline, first line", name: "hero_line1", widget: "string", hint: "Put *asterisks* around any word you want in gold italic. Example: Golden *hour*" }
+          - { label: "HERO — Big headline, second line", name: "hero_line2", widget: "string", hint: "Put *asterisks* around any word you want in gold italic." }
+          - { label: "HERO — Paragraph under the headline", name: "hero_sub", widget: "text" }
+          - { label: "HERO — Button", name: "hero_button", widget: "string" }
+          - { label: "HERO — Word at the bottom of the screen", name: "hero_scroll", widget: "string" }
+
+          # ---------- SCROLLING GOLD STRIP ----------
+          - label: "SCROLLING STRIP — Phrases"
+            name: "marquee_items"
+            widget: "list"
+            hint: "The gold text that scrolls across the screen. Add, remove or reorder as you like."
+            field: { label: "Phrase", name: "phrase", widget: "string" }
+
+          # ---------- PHILOSOPHY ----------
+          - { label: "PHILOSOPHY — Small label", name: "philo_eyebrow", widget: "string" }
+          - { label: "PHILOSOPHY — Small label in Hebrew", name: "philo_eyebrow_he", widget: "string" }
+          - { label: "PHILOSOPHY — Big headline", name: "philo_heading", widget: "string", hint: "Put *asterisks* around any word you want in gold italic." }
+          - { label: "PHILOSOPHY — First paragraph", name: "philo_p1", widget: "text" }
+          - { label: "PHILOSOPHY — Second paragraph", name: "philo_p2", widget: "text" }
+
+          # ---------- THE THREE BIG NUMBERS ----------
+          - { label: "NUMBERS — 1st number", name: "stat1_number", widget: "string", hint: "Digits only — it counts up on screen." }
+          - { label: "NUMBERS — 1st, letter after the number", name: "stat1_suffix", widget: "string", required: false, hint: "Optional. Leave empty, or add something like + or s." }
+          - { label: "NUMBERS — 1st caption", name: "stat1_label", widget: "string" }
+          - { label: "NUMBERS — 2nd number", name: "stat2_number", widget: "string", hint: "Digits only." }
+          - { label: "NUMBERS — 2nd, letter after the number", name: "stat2_suffix", widget: "string", required: false }
+          - { label: "NUMBERS — 2nd caption", name: "stat2_label", widget: "string" }
+          - { label: "NUMBERS — 3rd number", name: "stat3_number", widget: "string", hint: "Digits only." }
+          - { label: "NUMBERS — 3rd, letter after the number", name: "stat3_suffix", widget: "string", required: false }
+          - { label: "NUMBERS — 3rd caption", name: "stat3_label", widget: "string" }
+
+          # ---------- SHADE BAR ----------
+          - { label: "SHADE BAR — Left label", name: "spectrum_start", widget: "string" }
+          - { label: "SHADE BAR — Middle label", name: "spectrum_mid", widget: "string" }
+          - { label: "SHADE BAR — Right label", name: "spectrum_end", widget: "string" }
+          - { label: "SHADE BAR — Gold italic line underneath", name: "spectrum_caption", widget: "string" }
+
+          # ---------- GALLERY ----------
+          - { label: "GALLERY — Headline", name: "gallery_heading", widget: "string", hint: "Put *asterisks* around any word you want in gold italic." }
+          - { label: "GALLERY — Instagram link text", name: "gallery_ig_label", widget: "string" }
+          - { label: "GALLERY — Photo 1 caption", name: "gal1_caption", widget: "string" }
+          - { label: "GALLERY — Photo 1 description (for Google & screen readers)", name: "gal1_alt", widget: "string" }
+          - { label: "GALLERY — Photo 2 caption", name: "gal2_caption", widget: "string" }
+          - { label: "GALLERY — Photo 2 description (for Google & screen readers)", name: "gal2_alt", widget: "string" }
+          - { label: "GALLERY — Photo 3 caption", name: "gal3_caption", widget: "string" }
+          - { label: "GALLERY — Photo 3 description (for Google & screen readers)", name: "gal3_alt", widget: "string" }
+
+          # ---------- THE RITUAL (three steps) ----------
+          - { label: "RITUAL — Small label", name: "ritual_eyebrow", widget: "string" }
+          - { label: "RITUAL — Step 1 title", name: "ritual1_title", widget: "string" }
+          - { label: "RITUAL — Step 1 text", name: "ritual1_body", widget: "text" }
+          - { label: "RITUAL — Step 2 title", name: "ritual2_title", widget: "string" }
+          - { label: "RITUAL — Step 2 text", name: "ritual2_body", widget: "text" }
+          - { label: "RITUAL — Step 3 title", name: "ritual3_title", widget: "string" }
+          - { label: "RITUAL — Step 3 text", name: "ritual3_body", widget: "text" }
+
+          # ---------- PULL QUOTE ----------
+          - { label: "QUOTE — The quote", name: "quote_text", widget: "text", hint: "Put *asterisks* around any word you want in gold." }
+          - { label: "QUOTE — Line underneath", name: "quote_attrib", widget: "string" }
+
+          # ---------- SERVICES & PRICES ----------
+          - { label: "SERVICES — Small label", name: "invest_eyebrow", widget: "string" }
+          - { label: "SERVICES — Big headline", name: "invest_heading", widget: "text", hint: "Put *asterisks* around a word for gold italic. Press Enter for a new line." }
+          - { label: "SERVICES — Paragraph under the headline", name: "invest_intro", widget: "text" }
+
+          - { label: "Service 1 — name", name: "svc1_name", widget: "string" }
+          - { label: "Service 1 — description", name: "svc1_desc", widget: "text" }
+          - { label: "Service 1 — price", name: "svc1_price", widget: "string" }
+
+          - { label: "Service 2 — name", name: "svc2_name", widget: "string" }
+          - { label: "Service 2 — description", name: "svc2_desc", widget: "text" }
+          - { label: "Service 2 — price", name: "svc2_price", widget: "string" }
+
+          - { label: "Service 3 — name", name: "svc3_name", widget: "string" }
+          - { label: "Service 3 — description", name: "svc3_desc", widget: "text" }
+          - { label: "Service 3 — price", name: "svc3_price", widget: "string" }
+
+          - { label: "Service 4 — name", name: "svc4_name", widget: "string" }
+          - { label: "Service 4 — description", name: "svc4_desc", widget: "text" }
+          - { label: "Service 4 — price", name: "svc4_price", widget: "string" }
+
+          - { label: "Service 5 — name", name: "svc5_name", widget: "string" }
+          - { label: "Service 5 — description", name: "svc5_desc", widget: "text" }
+          - { label: "Service 5 — price", name: "svc5_price", widget: "string" }
+
+          - { label: "SERVICES — Button under the price list", name: "invest_button", widget: "string" }
+
+          # ---------- PROTOCOL (the four drop-downs) ----------
+          - { label: "PROTOCOL — Small label", name: "protocol_eyebrow", widget: "string" }
+          - { label: "PROTOCOL — Big headline", name: "protocol_heading", widget: "string", hint: "Put *asterisks* around any word you want in gold italic." }
+          - { label: "PROTOCOL — Paragraph under the headline", name: "protocol_intro", widget: "text" }
+          - { label: "Protocol 1 — title", name: "pro1_title", widget: "string" }
+          - { label: "Protocol 1 — text", name: "pro1_body", widget: "text" }
+          - { label: "Protocol 2 — title", name: "pro2_title", widget: "string" }
+          - { label: "Protocol 2 — text", name: "pro2_body", widget: "text" }
+          - { label: "Protocol 3 — title", name: "pro3_title", widget: "string" }
+          - { label: "Protocol 3 — text", name: "pro3_body", widget: "text" }
+          - { label: "Protocol 4 — title", name: "pro4_title", widget: "string" }
+          - { label: "Protocol 4 — text", name: "pro4_body", widget: "text" }
+
+          # ---------- CLOSING SECTION ----------
+          - { label: "CLOSING — Small label", name: "cta_eyebrow", widget: "string" }
+          - { label: "CLOSING — Big headline", name: "cta_heading", widget: "string", hint: "Put *asterisks* around any word you want in gold italic." }
+          - { label: "CLOSING — Button", name: "cta_button", widget: "string" }
+
+          # ---------- CONTACT DETAILS ----------
+          # These drive BOTH the text on the page and every link on it.
+          - { label: "CONTACT — Phone, as shown on the page", name: "contact_phone_display", widget: "string", hint: "How the number looks. Example: 050-292-2925" }
+          - { label: "CONTACT — Phone, for the call button", name: "contact_phone_dial", widget: "string", hint: "International format, no spaces. Example: +972502922925" }
+          - { label: "CONTACT — WhatsApp number", name: "contact_whatsapp", widget: "string", hint: "Country code, no + and no spaces. Example: 972502922925" }
+          - { label: "CONTACT — Email", name: "contact_email", widget: "string" }
+          - { label: "CONTACT — Instagram address", name: "contact_instagram_url", widget: "string", hint: "Full address. Example: https://instagram.com/spraytanisrael" }
+
+          # ---------- FOOTER ----------
+          - { label: "FOOTER — Tagline", name: "footer_tagline", widget: "text" }
+          - { label: "FOOTER — 'Visit' heading", name: "footer_visit_title", widget: "string" }
+          - { label: "FOOTER — Address, line 1", name: "address_line1", widget: "string" }
+          - { label: "FOOTER — Address, line 2", name: "address_line2", widget: "string" }
+          - { label: "FOOTER — Opening hours line", name: "address_hours", widget: "string" }
+          - { label: "FOOTER — 'Connect' heading", name: "footer_connect_title", widget: "string" }
+          - { label: "FOOTER — Instagram link text", name: "footer_ig_label", widget: "string" }
+          - { label: "FOOTER — WhatsApp link text", name: "footer_wa_label", widget: "string" }
+          - { label: "FOOTER — Copyright line", name: "footer_copyright", widget: "string", hint: "The year is added automatically." }
+
+          # ---------- GOOGLE / BROWSER TAB ----------
+          - { label: "GOOGLE — Page title (browser tab & Google result)", name: "seo_title", widget: "string" }
+          - { label: "GOOGLE — Page description (Google result)", name: "seo_description", widget: "text" }
