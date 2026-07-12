@@ -154,6 +154,14 @@ collections:
           - { label: "CLOSING — Big headline", name: "cta_heading", widget: "string", hint: "Put *asterisks* around any word you want in gold italic." }
           - { label: "CLOSING — Button", name: "cta_button", widget: "string" }
 
+          # ---------- "SPRAY TAN IN TEL AVIV" SECTION (helps Google find you) ----------
+          - { label: "LOCAL — Small label", name: "area_eyebrow", widget: "string" }
+          - { label: "LOCAL — Headline", name: "area_heading", widget: "string", hint: "Put *asterisks* around any word you want in gold italic. Try to keep the words 'spray tan' and 'Tel Aviv' in this headline — Google reads it." }
+          - { label: "LOCAL — First paragraph", name: "area_p1", widget: "text", hint: "Mention Tel Aviv, Dizengoff and the areas you serve. This paragraph is one of the main things Google reads to decide you are a Tel Aviv spray tan studio." }
+          - { label: "LOCAL — Second paragraph (at-home service)", name: "area_p2", widget: "text" }
+          - { label: "LOCAL — Hebrew paragraph", name: "area_p_he", widget: "text", hint: "The Hebrew version, for people searching שיזוף בהתזה בתל אביב." }
+          - { label: "LOCAL — Areas served line", name: "area_serving", widget: "string" }
+
           # ---------- CONTACT DETAILS ----------
           # These drive BOTH the text on the page and every link on it.
           - { label: "CONTACT — Phone, as shown on the page", name: "contact_phone_display", widget: "string", hint: "How the number looks. Example: 050-292-2925" }
@@ -174,5 +182,5 @@ collections:
           - { label: "FOOTER — Copyright line", name: "footer_copyright", widget: "string", hint: "The year is added automatically." }
 
           # ---------- GOOGLE / BROWSER TAB ----------
-          - { label: "GOOGLE — Page title (browser tab & Google result)", name: "seo_title", widget: "string" }
+          - { label: "GOOGLE — Page title (browser tab & Google result)", name: "seo_title", widget: "string", hint: "Keep it under ~60 characters and start with the words people search for." }
           - { label: "GOOGLE — Page description (Google result)", name: "seo_description", widget: "text" }
