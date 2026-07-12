@@ -1,5 +1,64 @@
+# Spray Tan Israel — spraytantelaviv.com
+# Everything on this site is open to every crawler, search engine and AI
+# assistant. The only closed door is the CMS login, which has no content.
+
 User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://spraytanisrael.netlify.app/sitemap.xml
+# --- Explicitly welcome AI assistants and answer engines ---
+# (These are already covered by the wildcard above; they are named here so the
+#  permission is unambiguous to crawlers that look for themselves by name.)
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+
+User-agent: Applebot
+Allow: /
+Disallow: /admin/
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /admin/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://spraytantelaviv.com/sitemap.xml

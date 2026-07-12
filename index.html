@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Spray Tan Israel · שיזוף בהתזה — Bespoke Sunless Tanning, Dizengoff 218, Tel Aviv</title>
-<meta name="description" content="Spray Tan Israel — Tel Aviv's original bespoke spray tan atelier. Twenty years of hand-applied, undertone-matched color on Dizengoff. Brides, editorials, and anyone who refuses orange." />
+<title>Spray Tan Tel Aviv | שיזוף בהתזה בתל אביב — Spray Tan Israel, Dizengoff 218</title>
+<meta name="description" content="Spray tan in Tel Aviv, hand-applied and matched to your undertone — never orange. 20 years of experience on Dizengoff 218. Bridal, express and at-home spray tanning. שיזוף בהתזה בתל אביב. Book on WhatsApp." />
 
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="styles.css" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -121,25 +121,20 @@
   }
 </style>
 
-<script>
-  tailwind.config = { theme:{ extend:{ colors:{
-    night:'#1F1512', cocoa:'#2A1C17', surface:'#34231C',
-    champagne:'#F5E7CE', sandlt:'#E9D3AE', gold:'#DCA45E', copper:'#C4763B', blush:'#E3A17C'
-  }}}}
-</script>
 <link rel="canonical" href="https://spraytantelaviv.com/" />
 <meta name="robots" content="index, follow" />
 <meta name="author" content="Spray Tan Israel" />
 <meta name="theme-color" content="#1F1512" />
 <meta name="geo.region" content="IL-TA" />
 <meta name="geo.placename" content="Tel Aviv" />
-<meta name="keywords" content="spray tan Tel Aviv, שיזוף בהתזה, sunless tanning Israel, bridal spray tan, self tan Dizengoff, שיזוף תל אביב, spray tan Israel" />
+<meta name="geo.position" content="32.0880452;34.775356" />
+<meta name="ICBM" content="32.0880452, 34.775356" />
 
 <!-- Open Graph (WhatsApp, Facebook, iMessage link previews) -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Spray Tan Israel" />
-<meta property="og:title" content="Spray Tan Israel · Bespoke Sunless Tanning, Tel Aviv" />
-<meta property="og:description" content="Tel Aviv's original bespoke spray tan atelier. Twenty years of hand-applied, undertone-matched color on Dizengoff. Never orange." />
+<meta property="og:title" content="Spray Tan Tel Aviv | שיזוף בהתזה בתל אביב — Spray Tan Israel, Dizengoff 218" />
+<meta property="og:description" content="Spray tan in Tel Aviv, hand-applied and matched to your undertone — never orange. 20 years of experience on Dizengoff 218. Bridal, express and at-home spray tanning. שיזוף בהתזה בתל אביב. Book on WhatsApp." />
 <meta property="og:url" content="https://spraytantelaviv.com/" />
 <meta property="og:image" content="https://spraytantelaviv.com/images/bride.jpg" />
 <meta property="og:image:alt" content="A luminous, even golden spray tan by Spray Tan Israel" />
@@ -148,41 +143,211 @@
 
 <!-- Twitter / X card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Spray Tan Israel · Bespoke Sunless Tanning, Tel Aviv" />
-<meta name="twitter:description" content="Tel Aviv's original bespoke spray tan atelier. Twenty years. Never orange." />
+<meta name="twitter:title" content="Spray Tan Tel Aviv | שיזוף בהתזה בתל אביב — Spray Tan Israel, Dizengoff 218" />
+<meta name="twitter:description" content="Spray tan in Tel Aviv, hand-applied and matched to your undertone — never orange. 20 years of experience on Dizengoff 218. Bridal, express and at-home spray tanning. שיזוף בהתזה בתל אביב. Book on WhatsApp." />
 <meta name="twitter:image" content="https://spraytantelaviv.com/images/bride.jpg" />
 
 <!-- Favicon (inline golden dot, no extra file needed) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231F1512'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23DCA45E'/%3E%3C/svg%3E" />
 
 <!-- Local Business structured data (Google understands your studio) -->
+<!-- Local business: tells Google exactly who you are, where, and what you charge -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "HealthAndBeautyBusiness",
+  "@id": "https://spraytantelaviv.com/#studio",
   "name": "Spray Tan Israel",
-  "alternateName": "שיזוף בהתזה",
-  "description": "Tel Aviv's original bespoke spray tan atelier. Twenty years of hand-applied, undertone-matched sunless tanning on Dizengoff.",
+  "alternateName": [
+    "Express Spray Tan in Tel Aviv and Lash Extensions",
+    "שיזוף בהתזה בתל אביב",
+    "Spray Tan Tel Aviv"
+  ],
+  "description": "Spray tan in Tel Aviv, hand-applied and matched to your undertone — never orange. 20 years of experience on Dizengoff 218. Bridal, express and at-home spray tanning. שיזוף בהתזה בתל אביב. Book on WhatsApp.",
   "url": "https://spraytantelaviv.com/",
   "telephone": "+972-50-292-2925",
   "email": "spraytanisrael@gmail.com",
-  "image": "https://spraytantelaviv.com/images/bride.jpg",
+  "image": [
+    "https://spraytantelaviv.com/images/bride.jpg",
+    "https://spraytantelaviv.com/images/man.jpg",
+    "https://spraytantelaviv.com/images/expr.jpg"
+  ],
   "priceRange": "₪₪",
+  "currenciesAccepted": "ILS",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "218 Dizengoff Street",
-    "addressLocality": "Tel Aviv",
+    "streetAddress": "Dizengoff Street 218",
+    "addressLocality": "Tel Aviv-Yafo",
+    "addressRegion": "Tel Aviv District",
     "addressCountry": "IL"
   },
-  "areaServed": "Tel Aviv",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 32.0880452,
+    "longitude": 34.775356
+  },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Dizengoff+218+Tel+Aviv",
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Tel Aviv"
+    },
+    {
+      "@type": "City",
+      "name": "Ramat Gan"
+    },
+    {
+      "@type": "City",
+      "name": "Herzliya"
+    },
+    {
+      "@type": "City",
+      "name": "Jaffa"
+    },
+    {
+      "@type": "City",
+      "name": "Givatayim"
+    }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59",
+      "description": "By appointment"
+    }
+  ],
+  "availableLanguage": [
+    "en",
+    "he"
+  ],
+  "knowsLanguage": [
+    "en",
+    "he"
+  ],
   "sameAs": [
     "https://instagram.com/spraytanisrael"
   ],
   "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bespoke full-body spray tan" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bridal spray tan" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Express spray tan" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lash lift and tint" } }
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "The Signature Glow שיזוף בהתזה בהתאמה אישית",
+        "description": "Full-body bespoke color, matched to your undertone and calendar. Develops in 8 hours; lives beautifully for up to 7-10 days on average. (Color looks best the first 5 days)",
+        "areaServed": {
+          "@type": "City",
+          "name": "Tel Aviv"
+        }
+      },
+      "price": "180",
+      "priceCurrency": "ILS"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Half Body / Bridal Trial Tan שיזוף בהתזה לכלות ניסיון ",
+        "description": "A bridal trial session minimum 4 weeks before the wedding date, just on your legs, or for anyone who just wants a darker tone to create sexier legs.",
+        "areaServed": {
+          "@type": "City",
+          "name": "Tel Aviv"
+        }
+      },
+      "price": "120",
+      "priceCurrency": "ILS"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "The One-Hour Express Spraytan שיזוף בהתזה אקספרס",
+        "description": "Rapid contour color for the dinner, the date, the flight tonight. In and out — glowing — before your espresso cools. Takes only 1 hour to develop to get that perfect glow for a same day event!",
+        "areaServed": {
+          "@type": "City",
+          "name": "Tel Aviv"
+        }
+      },
+      "price": "200",
+      "priceCurrency": "ILS"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Lash Lift & Tint הרמת ריסים",
+        "description": "Lifted, tinted lashes that help you wake up in the morning looking perfect— no mascara, no maintenance, six weeks of ease. (Results vary 6-8 weeks on average)",
+        "areaServed": {
+          "@type": "City",
+          "name": "Tel Aviv"
+        }
+      },
+      "price": "250",
+      "priceCurrency": "ILS"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "The Home Spraytan",
+        "description": "Camera-perfect color for shoots, stage, and screen. Perfect for bridal parties and hotel visits. Trusted by celebrities and brides across Tel Aviv and all over Israel. On location by arrangement for anyone who wants to be tanned but doesn't want to travel.",
+        "areaServed": {
+          "@type": "City",
+          "name": "Tel Aviv"
+        }
+      }
+    }
+  ]
+}
+</script>
+
+<!-- The prep questions, marked up as an FAQ so Google can surface them directly -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How should I prepare 48 hours before a spray tan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Complete any waxing or shaving now, so pores can settle. If you can, exfoliate gently the day before — polished skin takes retains color better. Then leave your skin alone: no oils, no self-tanner remnants, nothing on your skin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I do on the day of my spray tan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Arrive with bare skin — no moisturizer, deodorant, perfume, or makeup. Bring loose, dark clothing and flip flops. The solution needs room to breathe; so do you. "
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a spray tan take to develop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This is when your shade develops. No water, no sweat, no tight straps. When the time is up, rinse in lukewarm water without soap and pat, never rub, yourself dry. The outcome will be the best tan you dreamed of ❤️ "
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I make my spray tan last longer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Keep showers short and lukewarm, and give pools and long sea swims a few days' grace. Cared for this way, your glow fades slowly, evenly, and entirely on its own terms."
+      }
+    }
   ]
 }
 </script>
@@ -220,12 +385,12 @@
 
   <div class="relative z-10 h-full mx-auto max-w-[90rem] px-6 md:px-12 flex flex-col justify-center md:items-end">
     <div class="md:max-w-[52vw] md:text-right">
-      <p class="load-fade text-[0.7rem] tracking-[0.42em] uppercase text-gold/90 mb-7" style="--load-delay:200ms" data-cms="hero_eyebrow">Dizengoff 218 · Tel Aviv · Two decades of color</p>
+      <p class="load-fade text-[0.7rem] tracking-[0.42em] uppercase text-gold/90 mb-7" style="--load-delay:200ms" data-cms="hero_eyebrow">Get The Best Tan Of Your Life In Tel Aviv   שיזוף בהתזה בתל אביב</p>
       <h1 class="font-display font-light leading-[0.95] text-[clamp(3.4rem,10vw,9rem)] text-champagne">
         <span class="load-line"><span style="--load-delay:350ms" data-cms-rich="hero_line1">Golden hour,</span></span>
         <span class="load-line"><span style="--load-delay:550ms" data-cms-rich="hero_line2"><em class="italic ink-gold">any hour.</em></span></span>
       </h1>
-      <p class="load-fade mt-8 md:ml-auto max-w-[40ch] text-[clamp(0.95rem,1.2vw,1.1rem)] leading-relaxed text-champagne/85" style="--load-delay:850ms" data-cms="hero_sub">Bespoke, hand-applied color — mixed to your undertone, never to a formula. Worn by brides, editorials, and anyone who refuses orange.</p>
+      <p class="load-fade mt-8 md:ml-auto max-w-[40ch] text-[clamp(0.95rem,1.2vw,1.1rem)] leading-relaxed text-champagne/85" style="--load-delay:850ms" data-cms="hero_sub">Get a customised hand-applied airbrush spraytan that I mix specifically to your undertone, results never fake looking. Fades beautifully. Worn by brides, models, and anyone who refuses to look orange</p>
       <div class="load-fade mt-10 flex flex-wrap md:justify-end items-center gap-6" style="--load-delay:1050ms">
         <a data-cursor data-link="whatsapp" href="https://wa.me/972502922925" class="btn-fill magnetic border border-gold text-gold px-9 py-4 text-[0.72rem] tracking-[0.3em] uppercase"><span data-cms="hero_button">Reserve your shade</span> <span class="arrow-drift ml-2" aria-hidden="true">→</span></a>
         <a data-cursor data-link="tel" href="tel:+972502922925" class="link-line text-champagne/80 text-[0.72rem] tracking-[0.3em] uppercase" data-cms="contact_phone_display">050-292-2925</a>
@@ -257,8 +422,8 @@
     <div class="col-span-12 md:col-span-8 md:col-start-4">
       <h2 id="philosophy-title" class="reveal font-display font-light leading-[1.05] text-champagne text-[clamp(2.2rem,4.6vw,4.4rem)] max-w-[20ch]" data-cms-rich="philo_heading">We don't spray tans. We <em class="italic ink-gold">compose</em> them.</h2>
       <div class="mt-12 grid grid-cols-12 gap-y-10 md:gap-x-10">
-        <p class="reveal col-span-12 md:col-span-6 text-[1.02rem] leading-[1.9] text-champagne/80" style="--reveal-delay:120ms" data-cms="philo_p1">Every skin carries its own light — an undertone of olive, rose, or gold that decides how color will live on it. For twenty years, we have read that light before touching a single drop of solution. The result is a shade that exists exactly once: yours.</p>
-        <p class="reveal col-span-12 md:col-span-6 text-[1.02rem] leading-[1.9] text-champagne/80" style="--reveal-delay:260ms" data-cms="philo_p2">Our solutions are imported, skin-safe, and blended by hand in the studio on Dizengoff. Applied with contouring technique refined over hundreds of brides, editorial shoots, and stage appearances — color that photographs like a week in Mykonos and fades like a memory, evenly and without apology.</p>
+        <p class="reveal col-span-12 md:col-span-6 text-[1.02rem] leading-[1.9] text-champagne/80" style="--reveal-delay:120ms" data-cms="philo_p1">Everyone's skin has its own natural shade— an undertone of olive, rose, or gold that decides how color will develop on it. After two decades of customising tans daily, I can predict your perfect spraytan shade before applying a single drop of solution. The result is a shade that suits only you and your desired tan. No two spray tans are the same.</p>
+        <p class="reveal col-span-12 md:col-span-6 text-[1.02rem] leading-[1.9] text-champagne/80" style="--reveal-delay:260ms" data-cms="philo_p2">My solutions are imported, FDA approved, and blended by hand in my studio. I also carry PETA safe products, free of scents, parabens free, and the option to contour.  My spraytan technique is refined after tanning thousands of brides, editorial shoots, and celebrities— whether you'd like to look like you spent the summer in Ibiza or just don't want to look like you're white as a ghost with just a hint of color, I've got you covered!</p>
       </div>
       <dl class="reveal mt-16 grid grid-cols-3 gap-6 border-y border-[color:var(--hairline)] py-8" style="--reveal-delay:320ms">
         <div><dd class="font-display text-[clamp(2.4rem,4vw,3.6rem)] leading-none text-gold"><span class="count" data-target="20" data-cms-count="stat1_number">0</span><span data-cms="stat1_suffix"></span></dd><dt class="mt-2 text-[0.62rem] tracking-[0.32em] uppercase text-champagne/60" data-cms="stat1_label">Years of color</dt></div>
@@ -283,21 +448,21 @@
   <div class="grid grid-cols-12 gap-y-14 md:gap-x-8">
     <figure class="col-span-12 sm:col-span-6 md:col-span-4 md:mt-[10vh]" data-parallax="0.05">
       <div data-cursor class="frame reveal-clip aspect-[4/5]">
-        <img src="images/bride.jpg" alt="Client with a luminous, even golden tan" class="h-full w-full object-cover" data-cms-alt="gal1_alt" />
+        <img src="images/bride.jpg" width="1000" height="1250" loading="lazy" decoding="async" alt="Bride with a natural, even spray tan by Spray Tan Israel in Tel Aviv" class="h-full w-full object-cover" data-cms-alt="gal1_alt" />
       </div>
       <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55" data-cms="gal1_caption">Bridal glow · Shade 05</figcaption>
     </figure>
     <figure class="col-span-12 sm:col-span-6 md:col-span-4 md:-mt-[6vh]" data-parallax="-0.045">
       <div data-cursor class="frame reveal-clip aspect-[3/4]" style="--reveal-delay:140ms">
-        <img src="images/man.jpg" alt="Man with a warm bronze tan in an open cream shirt" class="h-full w-full object-cover" data-cms-alt="gal2_alt" />
+        <img src="images/man.jpg" width="1000" height="1333" loading="lazy" decoding="async" alt="Man with a warm bronze spray tan and contouring, Dizengoff 218 Tel Aviv" class="h-full w-full object-cover" data-cms-alt="gal2_alt" />
       </div>
       <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55" data-cms="gal2_caption">Men's contour · Shade 08</figcaption>
     </figure>
     <figure class="col-span-12 sm:col-span-6 md:col-span-4 md:mt-[18vh]" data-parallax="0.06">
       <div data-cursor class="frame reveal-clip aspect-[4/5]" style="--reveal-delay:280ms">
-        <img src="images/expr.jpg" alt="Client in a pale green dress with a luminous even tan" class="h-full w-full object-cover" data-cms-alt="gal3_alt" />
+        <img src="images/expr.jpg" width="1000" height="1250" loading="lazy" decoding="async" alt="Client with a luminous one-hour express spray tan in Tel Aviv" class="h-full w-full object-cover" data-cms-alt="gal3_alt" />
       </div>
-      <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55" data-cms="gal3_caption">Two-minute express · בשתי דקות</figcaption>
+      <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55" data-cms="gal3_caption">Express glow · בשעה אחת</figcaption>
     </figure>
 
     <div class="col-span-12 md:col-span-7 md:mt-[8vh] self-center" data-parallax="0.035">
@@ -331,11 +496,11 @@
       <div class="col-span-12 md:col-span-7 md:col-start-6">
         <ul class="divide-y divide-[color:var(--hairline)]">
           <!-- NOTE: adjust prices to your current rate card -->
-          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc1_name">The Signature Glow</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc1_desc">Full-body bespoke color, matched to your undertone and calendar. Develops in 8 hours; lives beautifully for up to 10 days.</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc1_price">₪ 350</p></li>
-          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline" style="--reveal-delay:100ms"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc2_name">The Bridal Protocol</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc2_desc">A trial session weeks before, a perfected shade the week of. Photographs flawlessly in white — under chuppah light, flash, and Mediterranean sun alike.</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc2_price">₪ 750</p></li>
-          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline" style="--reveal-delay:200ms"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc3_name">The Two-Minute Express</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc3_desc">שיזוף בשתי דקות. Rapid contour color for the dinner, the date, the flight tomorrow. In and out — glowing — before your espresso cools.</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc3_price">₪ 250</p></li>
-          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline" style="--reveal-delay:300ms"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc4_name">Lash Lift &amp; Tint</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc4_desc">The finishing gesture. Lifted, tinted lashes that frame the glow — no mascara, no maintenance, six weeks of ease.</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc4_price">₪ 280</p></li>
-          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline" style="--reveal-delay:400ms"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc5_name">The Editorial</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc5_desc">Camera-calibrated color for shoots, stage, and screen. Trusted by celebrities and productions across Tel Aviv. On location by arrangement.</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc5_price">By quote</p></li>
+          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc1_name">The Signature Glow שיזוף בהתזה בהתאמה אישית</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc1_desc">Full-body bespoke color, matched to your undertone and calendar. Develops in 8 hours; lives beautifully for up to 7-10 days on average. (Color looks best the first 5 days)</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc1_price">₪ 180</p></li>
+          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline" style="--reveal-delay:100ms"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc2_name">Half Body / Bridal Trial Tan שיזוף בהתזה לכלות ניסיון </h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc2_desc">A bridal trial session minimum 4 weeks before the wedding date, just on your legs, or for anyone who just wants a darker tone to create sexier legs.</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc2_price">₪ 120</p></li>
+          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline" style="--reveal-delay:200ms"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc3_name">The One-Hour Express Spraytan שיזוף בהתזה אקספרס</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc3_desc">Rapid contour color for the dinner, the date, the flight tonight. In and out — glowing — before your espresso cools. Takes only 1 hour to develop to get that perfect glow for a same day event!</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc3_price">₪ 200</p></li>
+          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline" style="--reveal-delay:300ms"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc4_name">Lash Lift &amp; Tint הרמת ריסים</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc4_desc">Lifted, tinted lashes that help you wake up in the morning looking perfect— no mascara, no maintenance, six weeks of ease. (Results vary 6-8 weeks on average)</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc4_price">₪ 250</p></li>
+          <li class="reveal group py-8 grid grid-cols-12 gap-4 items-baseline" style="--reveal-delay:400ms"><div class="col-span-9"><h3 class="font-display text-[clamp(1.4rem,2vw,1.9rem)] text-champagne group-hover:text-gold group-hover:italic transition-all duration-500" data-cms="svc5_name">The Home Spraytan</h3><p class="mt-2 text-[0.9rem] leading-relaxed text-champagne/70 max-w-[52ch]" data-cms="svc5_desc">Camera-perfect color for shoots, stage, and screen. Perfect for bridal parties and hotel visits. Trusted by celebrities and brides across Tel Aviv and all over Israel. On location by arrangement for anyone who wants to be tanned but doesn't want to travel.</p></div><p class="col-span-3 text-right text-[0.82rem] tracking-[0.22em] text-gold" data-cms="svc5_price">By quote</p></li>
         </ul>
         <a data-cursor data-link="whatsapp" href="https://wa.me/972502922925" class="reveal btn-fill magnetic mt-12 inline-flex items-center border border-gold text-gold px-9 py-4 text-[0.72rem] tracking-[0.3em] uppercase" style="--reveal-delay:500ms"><span data-cms="invest_button">Book a consultation</span> <span class="arrow-drift ml-2" aria-hidden="true">→</span></a>
       </div>
@@ -354,10 +519,29 @@
     </div>
     <div class="col-span-12 md:col-span-7 md:col-start-6">
       <div id="accordion" class="divide-y divide-[color:var(--hairline)] border-y border-[color:var(--hairline)]">
-        <div class="acc-item reveal" data-open="true"><h3><button data-cursor type="button" class="acc-trigger w-full flex items-center justify-between gap-6 py-7 text-left" aria-expanded="true" aria-controls="panel-1" id="trigger-1"><span class="font-display text-[clamp(1.3rem,1.8vw,1.7rem)] text-champagne" data-cms="pro1_title">48 hours before</span><span class="acc-icon text-gold text-xl leading-none" aria-hidden="true">＋</span></button></h3><div class="acc-panel" id="panel-1" role="region" aria-labelledby="trigger-1"><div><p class="pb-8 pr-4 text-[0.95rem] leading-[1.9] text-champagne/75 max-w-[58ch]" data-cms="pro1_body">Complete any waxing or shaving now, so pores can settle. Exfoliate gently the day before — polished skin takes color like fresh canvas takes paint. Then leave your skin alone: no oils, no self-tanner remnants, nothing that competes.</p></div></div></div>
-        <div class="acc-item reveal" data-open="false" style="--reveal-delay:100ms"><h3><button data-cursor type="button" class="acc-trigger w-full flex items-center justify-between gap-6 py-7 text-left" aria-expanded="false" aria-controls="panel-2" id="trigger-2"><span class="font-display text-[clamp(1.3rem,1.8vw,1.7rem)] text-champagne" data-cms="pro2_title">The day of</span><span class="acc-icon text-gold text-xl leading-none" aria-hidden="true">＋</span></button></h3><div class="acc-panel" id="panel-2" role="region" aria-labelledby="trigger-2"><div><p class="pb-8 pr-4 text-[0.95rem] leading-[1.9] text-champagne/75 max-w-[58ch]" data-cms="pro2_body">Arrive with bare skin — no moisturizer, deodorant, perfume, or makeup on the areas being tanned. Bring loose, dark clothing and open shoes for the journey home. The solution needs room to breathe; so do you.</p></div></div></div>
-        <div class="acc-item reveal" data-open="false" style="--reveal-delay:200ms"><h3><button data-cursor type="button" class="acc-trigger w-full flex items-center justify-between gap-6 py-7 text-left" aria-expanded="false" aria-controls="panel-3" id="trigger-3"><span class="font-display text-[clamp(1.3rem,1.8vw,1.7rem)] text-champagne" data-cms="pro3_title">The first 8 hours</span><span class="acc-icon text-gold text-xl leading-none" aria-hidden="true">＋</span></button></h3><div class="acc-panel" id="panel-3" role="region" aria-labelledby="trigger-3"><div><p class="pb-8 pr-4 text-[0.95rem] leading-[1.9] text-champagne/75 max-w-[58ch]" data-cms="pro3_body">This is when your shade develops — treat it like wet varnish. No water, no sweat, no tight straps. When the time is up, rinse in lukewarm water without soap and pat, never rub, yourself dry. What emerges is the color we composed together.</p></div></div></div>
-        <div class="acc-item reveal" data-open="false" style="--reveal-delay:300ms"><h3><button data-cursor type="button" class="acc-trigger w-full flex items-center justify-between gap-6 py-7 text-left" aria-expanded="false" aria-controls="panel-4" id="trigger-4"><span class="font-display text-[clamp(1.3rem,1.8vw,1.7rem)] text-champagne" data-cms="pro4_title">The days after</span><span class="acc-icon text-gold text-xl leading-none" aria-hidden="true">＋</span></button></h3><div class="acc-panel" id="panel-4" role="region" aria-labelledby="trigger-4"><div><p class="pb-8 pr-4 text-[0.95rem] leading-[1.9] text-champagne/75 max-w-[58ch]" data-cms="pro4_body">Moisturize morning and night — hydrated skin holds color longest. Keep showers short and lukewarm, and give pools and long sea swims a few days' grace. Cared for this way, your glow retires slowly, evenly, and entirely on its own terms.</p></div></div></div>
+        <div class="acc-item reveal" data-open="true"><h3><button data-cursor type="button" class="acc-trigger w-full flex items-center justify-between gap-6 py-7 text-left" aria-expanded="true" aria-controls="panel-1" id="trigger-1"><span class="font-display text-[clamp(1.3rem,1.8vw,1.7rem)] text-champagne" data-cms="pro1_title">48 hours before</span><span class="acc-icon text-gold text-xl leading-none" aria-hidden="true">＋</span></button></h3><div class="acc-panel" id="panel-1" role="region" aria-labelledby="trigger-1"><div><p class="pb-8 pr-4 text-[0.95rem] leading-[1.9] text-champagne/75 max-w-[58ch]" data-cms="pro1_body">Complete any waxing or shaving now, so pores can settle. If you can, exfoliate gently the day before — polished skin takes retains color better. Then leave your skin alone: no oils, no self-tanner remnants, nothing on your skin.</p></div></div></div>
+        <div class="acc-item reveal" data-open="false" style="--reveal-delay:100ms"><h3><button data-cursor type="button" class="acc-trigger w-full flex items-center justify-between gap-6 py-7 text-left" aria-expanded="false" aria-controls="panel-2" id="trigger-2"><span class="font-display text-[clamp(1.3rem,1.8vw,1.7rem)] text-champagne" data-cms="pro2_title">The day of</span><span class="acc-icon text-gold text-xl leading-none" aria-hidden="true">＋</span></button></h3><div class="acc-panel" id="panel-2" role="region" aria-labelledby="trigger-2"><div><p class="pb-8 pr-4 text-[0.95rem] leading-[1.9] text-champagne/75 max-w-[58ch]" data-cms="pro2_body">Arrive with bare skin — no moisturizer, deodorant, perfume, or makeup. Bring loose, dark clothing and flip flops. The solution needs room to breathe; so do you. </p></div></div></div>
+        <div class="acc-item reveal" data-open="false" style="--reveal-delay:200ms"><h3><button data-cursor type="button" class="acc-trigger w-full flex items-center justify-between gap-6 py-7 text-left" aria-expanded="false" aria-controls="panel-3" id="trigger-3"><span class="font-display text-[clamp(1.3rem,1.8vw,1.7rem)] text-champagne" data-cms="pro3_title">The first 8 hours</span><span class="acc-icon text-gold text-xl leading-none" aria-hidden="true">＋</span></button></h3><div class="acc-panel" id="panel-3" role="region" aria-labelledby="trigger-3"><div><p class="pb-8 pr-4 text-[0.95rem] leading-[1.9] text-champagne/75 max-w-[58ch]" data-cms="pro3_body">This is when your shade develops. No water, no sweat, no tight straps. When the time is up, rinse in lukewarm water without soap and pat, never rub, yourself dry. The outcome will be the best tan you dreamed of ❤️ </p></div></div></div>
+        <div class="acc-item reveal" data-open="false" style="--reveal-delay:300ms"><h3><button data-cursor type="button" class="acc-trigger w-full flex items-center justify-between gap-6 py-7 text-left" aria-expanded="false" aria-controls="panel-4" id="trigger-4"><span class="font-display text-[clamp(1.3rem,1.8vw,1.7rem)] text-champagne" data-cms="pro4_title">The days after</span><span class="acc-icon text-gold text-xl leading-none" aria-hidden="true">＋</span></button></h3><div class="acc-panel" id="panel-4" role="region" aria-labelledby="trigger-4"><div><p class="pb-8 pr-4 text-[0.95rem] leading-[1.9] text-champagne/75 max-w-[58ch]" data-cms="pro4_body">Keep showers short and lukewarm, and give pools and long sea swims a few days' grace. Cared for this way, your glow fades slowly, evenly, and entirely on its own terms.</p></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05b · LOCAL SEO CONTENT — real, readable copy that Google can rank -->
+<section class="relative bg-cocoa/40 border-t border-[color:var(--hairline)]" aria-labelledby="area-title">
+  <div class="mx-auto max-w-[90rem] px-6 md:px-12 py-[12vh]">
+    <div class="grid grid-cols-12 gap-y-12 md:gap-x-10">
+      <div class="col-span-12 md:col-span-4">
+        <p class="reveal text-[0.68rem] tracking-[0.42em] uppercase text-blush" data-cms="area_eyebrow">The Studio</p>
+        <h2 id="area-title" class="reveal font-display font-light leading-[1.05] mt-4 text-[clamp(2rem,3.6vw,3.2rem)] text-champagne" style="--reveal-delay:120ms" data-cms-rich="area_heading">Spray tan in *Tel Aviv.*</h2>
+        <div class="reveal shade-spectrum h-[4px] w-24 mt-10" style="--reveal-delay:240ms" aria-hidden="true"></div>
+      </div>
+      <div class="col-span-12 md:col-span-7 md:col-start-6">
+        <p class="reveal text-[1rem] leading-[1.9] text-champagne/80" data-cms="area_p1">The studio sits on Dizengoff 218, in the heart of Tel Aviv, a few minutes from Kikar Rabin and the Old North. Clients come from across the city and beyond — Ramat Aviv, Jaffa, Givatayim, Ramat Gan and Herzliya — for a spray tan that is mixed by hand rather than sprayed from a bottle. Brides book weeks ahead of the chuppah; everyone else books the morning of the flight.</p>
+        <p class="reveal mt-6 text-[1rem] leading-[1.9] text-champagne/80" style="--reveal-delay:120ms" data-cms="area_p2">If you can't come to Dizengoff, the tan can come to you: at-home and hotel spray tanning is available across Tel Aviv and, by arrangement, anywhere in Israel — for bridal parties, photo shoots, and anyone who would rather glow at home.</p>
+        <p dir="rtl" class="reveal font-hebrew mt-8 text-[1.02rem] leading-[1.9] text-champagne/75" style="--reveal-delay:240ms" data-cms="area_p_he">שיזוף בהתזה בתל אביב, ברחוב דיזנגוף 218. תמיסה מותאמת אישית לגוון העור שלך, בעבודת יד, עם ניסיון של עשרים שנה — שיזוף טבעי שלא נראה כתום. שירות גם בבית הלקוחה ובמלונות, בתל אביב ובכל הארץ.</p>
+        <p class="reveal mt-10 text-[0.7rem] tracking-[0.3em] uppercase text-champagne/50" style="--reveal-delay:320ms" data-cms="area_serving">Tel Aviv · Ramat Aviv · Jaffa · Givatayim · Ramat Gan · Herzliya</p>
       </div>
     </div>
   </div>
@@ -375,7 +559,9 @@
       <a data-cursor data-link="tel" href="tel:+972502922925" class="link-line text-[0.74rem] tracking-[0.3em] uppercase text-champagne/85" data-cms="contact_phone_display">050-292-2925</a>
     </div>
     <footer class="mt-[12vh] border-t border-champagne/15 pt-12 grid grid-cols-12 gap-y-10 md:gap-x-10 text-[0.82rem] leading-relaxed">
-      <div class="col-span-12 md:col-span-4"><p class="font-display text-[1.3rem] tracking-[0.2em] text-champagne" data-cms="brand_name">SPRAY&nbsp;TAN&nbsp;ISRAEL</p><p dir="rtl" class="font-hebrew mt-1 text-gold" data-cms="brand_hebrew">שיזוף בהתזה</p><p class="mt-5 max-w-[36ch] text-champagne/60" data-cms="footer_tagline">Tel Aviv's original bespoke tanning atelier. Twenty years. Never orange.</p></div>
+      <div class="col-span-12 md:col-span-4"><p class="font-display text-[1.3rem] tracking-[0.2em] text-champagne" data-cms="brand_name">SPRAY&nbsp;TAN&nbsp;ISRAEL</p><p dir="rtl" class="font-hebrew mt-1 text-gold" data-cms="brand_hebrew">שיזוף בהתזה</p><p class="mt-5 max-w-[36ch] text-champagne/60" data-cms="footer_tagline">Tel Aviv's original bespoke spray tanning Master. Twenty years of experience. Never orange. Fades beautifully. 
+
+</p></div>
       <div class="col-span-6 md:col-span-3 md:col-start-6"><p class="text-[0.64rem] tracking-[0.36em] uppercase text-gold mb-4" data-cms="footer_visit_title">Visit</p><address class="not-italic text-champagne/75"><span data-cms="address_line1">218 Dizengoff Street</span><br/><span data-cms="address_line2">Tel Aviv, Israel</span><br/><span class="text-champagne/50" data-cms="address_hours">Open always — by appointment</span></address></div>
       <div class="col-span-6 md:col-span-3 md:col-start-10"><p class="text-[0.64rem] tracking-[0.36em] uppercase text-gold mb-4" data-cms="footer_connect_title">Connect</p><ul class="space-y-2 text-champagne/75"><li><a data-cursor data-link="instagram" class="link-line" href="https://instagram.com/spraytanisrael" rel="noopener" data-cms="footer_ig_label">Instagram · @spraytanisrael</a></li><li><a data-cursor data-link="whatsapp" class="link-line" href="https://wa.me/972502922925" data-cms="footer_wa_label">WhatsApp · +972 50-292-2925</a></li><li><a data-cursor data-link="email" class="link-line" href="mailto:spraytanisrael@gmail.com" data-cms="contact_email">spraytanisrael@gmail.com</a></li></ul></div>
       <p class="col-span-12 mt-8 text-[0.66rem] tracking-[0.28em] uppercase text-champagne/40">© <span id="year">2026</span> <span data-cms="footer_copyright">Spray Tan Israel · Dizengoff 218, Tel Aviv</span></p>
