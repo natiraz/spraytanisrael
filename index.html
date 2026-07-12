@@ -446,24 +446,29 @@
     <a data-cursor data-link="instagram" href="https://instagram.com/spraytanisrael" rel="noopener" class="reveal link-line hidden sm:inline text-[0.7rem] tracking-[0.3em] uppercase text-blush" style="--reveal-delay:150ms"><span data-cms="gallery_ig_label">@spraytanisrael</span> <span class="arrow-drift" aria-hidden="true">→</span></a>
   </div>
   <div class="grid grid-cols-12 gap-y-14 md:gap-x-8">
+    <div id="gallery-grid" class="contents">
     <figure class="col-span-12 sm:col-span-6 md:col-span-4 md:mt-[10vh]" data-parallax="0.05">
       <div data-cursor class="frame reveal-clip aspect-[4/5]">
-        <img src="images/bride.jpg" width="1000" height="1250" loading="lazy" decoding="async" alt="Bride with a natural, even spray tan by Spray Tan Israel in Tel Aviv" class="h-full w-full object-cover" data-cms-alt="gal1_alt" />
+        <img src="images/bride.jpg" width="1000" height="1250" loading="lazy" decoding="async" alt="Bride with a natural, even spray tan by Spray Tan Israel in Tel Aviv" class="h-full w-full object-cover" />
       </div>
-      <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55" data-cms="gal1_caption">Bridal glow · Shade 05</figcaption>
+      <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55">Bridal glow · Shade 05</figcaption>
     </figure>
     <figure class="col-span-12 sm:col-span-6 md:col-span-4 md:-mt-[6vh]" data-parallax="-0.045">
       <div data-cursor class="frame reveal-clip aspect-[3/4]" style="--reveal-delay:140ms">
-        <img src="images/man.jpg" width="1000" height="1333" loading="lazy" decoding="async" alt="Man with a warm bronze spray tan and contouring, Dizengoff 218 Tel Aviv" class="h-full w-full object-cover" data-cms-alt="gal2_alt" />
+        <img src="images/man.jpg" width="1000" height="1333" loading="lazy" decoding="async" alt="Man with a warm bronze spray tan and contouring, Dizengoff 218 Tel Aviv" class="h-full w-full object-cover" />
       </div>
-      <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55" data-cms="gal2_caption">Men's contour · Shade 08</figcaption>
+      <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55">Men's contour · Shade 08</figcaption>
     </figure>
     <figure class="col-span-12 sm:col-span-6 md:col-span-4 md:mt-[18vh]" data-parallax="0.06">
       <div data-cursor class="frame reveal-clip aspect-[4/5]" style="--reveal-delay:280ms">
-        <img src="images/expr.jpg" width="1000" height="1250" loading="lazy" decoding="async" alt="Client with a luminous one-hour express spray tan in Tel Aviv" class="h-full w-full object-cover" data-cms-alt="gal3_alt" />
+        <img src="images/expr.jpg" width="1000" height="1250" loading="lazy" decoding="async" alt="Client with a luminous one-hour express spray tan in Tel Aviv" class="h-full w-full object-cover" />
       </div>
-      <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55" data-cms="gal3_caption">Express glow · בשעה אחת</figcaption>
+      <figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55">Express glow · בשעה אחת</figcaption>
     </figure>
+    </div>
+
+    <!-- Video appears here only if one is set in the editor -->
+    <div id="video-slot" class="contents"></div>
 
     <div class="col-span-12 md:col-span-7 md:mt-[8vh] self-center" data-parallax="0.035">
       <div class="reveal border-y border-[color:var(--hairline)] py-10">
@@ -586,12 +591,18 @@
     var els = document.querySelectorAll('.reveal, .reveal-clip');
     if (!('IntersectionObserver' in window) || reduce){
       els.forEach(function(el){ el.classList.add('is-visible'); });
+      window.__revealRefresh = function(){
+        document.querySelectorAll('.reveal, .reveal-clip').forEach(function(el){ el.classList.add('is-visible'); });
+      };
       return;
     }
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
     }, { threshold:0.08, rootMargin:'0px 0px -4% 0px' });
     els.forEach(function(el){ io.observe(el); });
+    window.__revealRefresh = function(){
+      document.querySelectorAll('.reveal, .reveal-clip').forEach(function(el){ io.observe(el); });
+    };
   });
 
   // --- FAILSAFE: if anything is still hidden 1.6s after load, force it visible ---
@@ -633,6 +644,10 @@
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('resize', onScroll, {passive:true});
     onScroll();
+    window.__parallaxRefresh = function(){
+      pxEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+      onScroll();
+    };
   });
 
   // --- Dust particles ---
@@ -664,7 +679,14 @@
     var mx=-100,my=-100,cx=-100,cy=-100,shown=false;
     document.addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; if(!shown){ dot.style.opacity='1'; shown=true; } }, {passive:true});
     (function loop(){ cx+=(mx-cx)*0.18; cy+=(my-cy)*0.18; dot.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)'; requestAnimationFrame(loop); })();
-    document.querySelectorAll('[data-cursor]').forEach(function(el){ el.addEventListener('mouseenter', function(){ dot.classList.add('is-active'); }); el.addEventListener('mouseleave', function(){ dot.classList.remove('is-active'); }); });
+    function bind(el){
+      if(el.__cursorBound) return;
+      el.__cursorBound = true;
+      el.addEventListener('mouseenter', function(){ dot.classList.add('is-active'); });
+      el.addEventListener('mouseleave', function(){ dot.classList.remove('is-active'); });
+    }
+    document.querySelectorAll('[data-cursor]').forEach(bind);
+    window.__cursorRefresh = function(){ document.querySelectorAll('[data-cursor]').forEach(bind); };
   });
 
   // --- Year ---
@@ -761,6 +783,75 @@
         }
       }
     }
+
+    // --- gallery: drawn from however many photos are in the editor ------
+    var grid = document.getElementById('gallery-grid');
+    var photos = data.gallery_items;
+    if(grid && Array.isArray(photos)){
+      var shown = photos.filter(function(p){ return p && p.image; });
+      if(shown.length){
+        // Repeating rhythm of shapes and vertical offsets, so any number of
+        // photos still lands as a staggered editorial grid rather than a slab.
+        var shapes = [
+          { ratio:'aspect-[4/5]', drop:'md:mt-[10vh]',  px:'0.05'  },
+          { ratio:'aspect-[3/4]', drop:'md:-mt-[6vh]',  px:'-0.045'},
+          { ratio:'aspect-[4/5]', drop:'md:mt-[18vh]',  px:'0.06'  }
+        ];
+        grid.innerHTML = '';
+        shown.forEach(function(p, i){
+          var s = shapes[i % shapes.length];
+          var fig = document.createElement('figure');
+          fig.className = 'col-span-12 sm:col-span-6 md:col-span-4 ' + s.drop;
+          fig.setAttribute('data-parallax', s.px);
+          fig.innerHTML =
+            '<div data-cursor class="frame reveal-clip ' + s.ratio + '" style="--reveal-delay:' + ((i % 3) * 140) + 'ms">' +
+              '<img src="' + esc(p.image) + '" alt="' + esc(p.alt || p.caption || '') + '" ' +
+                   'class="h-full w-full object-cover" loading="lazy" decoding="async" />' +
+            '</div>' +
+            (p.caption ? '<figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55">' + esc(p.caption) + '</figcaption>' : '');
+          grid.appendChild(fig);
+        });
+      }
+    }
+
+    // --- video: only rendered if one has been added ----------------------
+    var slot = document.getElementById('video-slot');
+    var file = data.video_file, url = data.video_url;
+    if(slot && (file || url)){
+      var media = '';
+      if(file){
+        media = '<video class="h-full w-full object-cover" controls playsinline preload="metadata"' +
+                (data.video_poster ? ' poster="' + esc(data.video_poster) + '"' : '') +
+                '><source src="' + esc(file) + '" /></video>';
+      } else {
+        var embed = '';
+        var yt = String(url).match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([A-Za-z0-9_-]{6,})/);
+        var vm = String(url).match(/vimeo\.com\/(?:video\/)?(\d+)/);
+        if(yt) embed = 'https://www.youtube-nocookie.com/embed/' + yt[1];
+        else if(vm) embed = 'https://player.vimeo.com/video/' + vm[1];
+        if(embed){
+          media = '<iframe class="h-full w-full" src="' + esc(embed) + '" title="' +
+                  esc(data.video_caption || 'Spray Tan Israel') + '" loading="lazy" frameborder="0" ' +
+                  'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ' +
+                  'allowfullscreen></iframe>';
+        }
+      }
+      if(media){
+        var wrap = document.createElement('figure');
+        wrap.className = 'col-span-12 md:col-span-8 md:col-start-3 mt-[6vh]';
+        wrap.innerHTML =
+          '<div class="frame reveal-clip aspect-video">' + media + '</div>' +
+          (data.video_caption ? '<figcaption class="cap mt-4 text-[0.68rem] tracking-[0.3em] uppercase text-champagne/55">' + esc(data.video_caption) + '</figcaption>' : '');
+        slot.innerHTML = '';
+        slot.appendChild(wrap);
+      }
+    }
+
+    // Everything above was created after the animation code ran, so hand the
+    // new elements back to it — otherwise they would never fade in.
+    if(window.__revealRefresh) window.__revealRefresh();
+    if(window.__parallaxRefresh) window.__parallaxRefresh();
+    if(window.__cursorRefresh) window.__cursorRefresh();
 
     // --- links, all rebuilt from the contact fields --------------------
     var wa = digits(data.contact_whatsapp);
