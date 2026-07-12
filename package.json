@@ -1,0 +1,10 @@
+{
+  "name": "spraytantelaviv",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}
