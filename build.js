@@ -107,20 +107,39 @@ function has(data, k) {
 /* ---------------------------------------------------------------
    Language switcher — same markup in the header and the footer.
    --------------------------------------------------------------- */
+/* ---------------------------------------------------------------
+   styles.css is a COMPILED, PURGED Tailwind build — there is no Tailwind
+   step in this repo, so it contains only the utility classes that were
+   present in the original English page. Any new class invented here would
+   simply not exist and would silently do nothing.
+
+   So the switcher carries its own CSS, written against the site's own
+   colour variables. It cannot break when the stylesheet is rebuilt.
+   --------------------------------------------------------------- */
+const SWITCH_CSS = [
+  '.lang-switch{ display:flex; align-items:center; gap:.5rem;',
+  '  font-size:.66rem; letter-spacing:.22em; text-transform:uppercase; }',
+  '.lang-switch a{ color:rgba(245,231,206,.5); text-decoration:none;',
+  '  transition:color .5s cubic-bezier(.22,1,.36,1); }',
+  '.lang-switch a:hover{ color:var(--gold); }',
+  '.lang-switch a[aria-current="page"]{ color:var(--gold); }',
+  '.lang-switch .sep{ color:rgba(245,231,206,.25); }',
+  '.hdr-actions{ display:flex; align-items:center; gap:1.25rem; }',
+  '@media (max-width:520px){ .hdr-actions{ gap:.75rem; } }',
+  '/* on narrow screens the header is tight — shrink, do not wrap */',
+  '@media (max-width:520px){ .lang-switch{ gap:.35rem; font-size:.6rem;',
+  '  letter-spacing:.12em; } }',
+].join('\n');
+
 function switcherHtml(current) {
   const links = LANGS.map(function (l) {
     const href = l.folder ? '/' + l.folder + '/' : '/';
     const active = l.code === current;
-    const cls = active
-      ? 'text-gold'
-      : 'text-champagne/50 hover:text-gold transition-all duration-500';
     return '<a href="' + href + '" hreflang="' + l.hreflang + '" lang="' + l.hreflang + '"' +
-      (active ? ' aria-current="page"' : '') +
-      ' class="' + cls + '">' + l.label + '</a>';
-  }).join('<span class="text-champagne/25" aria-hidden="true">·</span>');
+      (active ? ' aria-current="page"' : '') + '>' + l.label + '</a>';
+  }).join('<span class="sep" aria-hidden="true">·</span>');
 
-  return '<nav aria-label="Language" dir="ltr" class="lang-switch flex items-center gap-2 ' +
-    'text-[0.66rem] tracking-[0.22em] uppercase">' + links + '</nav>';
+  return '<nav aria-label="Language" dir="ltr" class="lang-switch">' + links + '</nav>';
 }
 
 /* ---------------------------------------------------------------
@@ -167,6 +186,31 @@ function renderPage(template, lang, data) {
 
   /* --- document language and direction ---------------------------- */
   $('html').attr('lang', lang.hreflang).attr('dir', lang.dir);
+
+  /* ---------------------------------------------------------------
+     Make every asset path root-absolute.
+
+     The template is written for the site root, so it links to
+     "styles.css" and "images/bride.jpg". From /he/ or /fr/ a browser
+     resolves those against the folder — /he/styles.css — which does not
+     exist, and the page loads with no stylesheet at all.
+
+     Rewriting to "/styles.css" fixes it for every language including
+     English, where the meaning is unchanged.
+
+     Note this deliberately only touches href/src ATTRIBUTES. The loader
+     script fetches 'content.json' as a relative URL and must stay that
+     way — each language folder has its own copy next to its page.
+     --------------------------------------------------------------- */
+  $('[href], [src]').each(function (_, el) {
+    ['href', 'src'].forEach(function (attr) {
+      const v = $(el).attr(attr);
+      if (!v) return;
+      // leave absolute URLs, anchors, and non-http schemes alone
+      if (/^([a-z][a-z0-9+.-]*:|\/\/|\/|#)/i.test(v)) return;
+      $(el).attr(attr, '/' + v.replace(/^\.\//, ''));
+    });
+  });
 
   /* --- fields that only belong on the English page ------------------ */
   if (lang.code !== 'en') {
@@ -289,7 +333,8 @@ function renderPage(template, lang, data) {
   });
   $('head').append(head);
 
-  /* --- Hebrew needs a body face that actually has Hebrew glyphs ------ */
+  /* --- our own CSS: switcher on every page, RTL layer on Hebrew ------ */
+  let ownCss = SWITCH_CSS;
   if (lang.code === 'he') {
     const fontLink = $('link[href*="fonts.googleapis.com/css2"]');
     if (fontLink.length) {
@@ -299,8 +344,9 @@ function renderPage(template, lang, data) {
           '&display=swap', '&family=Assistant:wght@300;400;600&display=swap'));
       }
     }
-    $('head').append('\n<style>\n' + RTL_CSS + '\n</style>\n');
+    ownCss += '\n' + RTL_CSS;
   }
+  $('head').append('\n<style>\n' + ownCss + '\n</style>\n');
 
   /* --- structured data ---------------------------------------------- */
   $('script[type="application/ld+json"]').each(function (_, el) {
@@ -337,8 +383,20 @@ function renderPage(template, lang, data) {
 
   /* --- language switcher, header and footer ------------------------- */
   const sw = switcherHtml(lang.code);
+
+  // Header: sit the switcher next to the Reserve button rather than adding a
+  // third item to the justify-between row, which would push the brand off-centre.
   const bar = $('header > div').first();
-  if (bar.length) bar.append(sw);
+  const btn = bar.find('[data-cms="nav_button"]').first();
+  if (btn.length) {
+    btn.before('<div class="hdr-actions"></div>');
+    const wrap = bar.find('.hdr-actions').first();
+    wrap.append(sw);
+    wrap.append(btn);
+  } else if (bar.length) {
+    bar.append(sw);
+  }
+
   const connect = $('[data-cms="footer_connect_title"]').parent();
   if (connect.length) connect.append('<div class="mt-6">' + sw + '</div>');
 
