@@ -4,9 +4,32 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Spray Tan Israel — Content Editor</title>
+<style>
+  /* Decap types every box left-to-right. Without this, Hebrew looks
+     scrambled while you type it — the letters are correct, the cursor
+     jumps to the wrong end. This flips the boxes on the Hebrew tab only. */
+  [data-collection="content_he"] input[type="text"],
+  [data-collection="content_he"] textarea,
+  [data-collection="content_he"] [role="textbox"] {
+    direction: rtl;
+    text-align: right;
+  }
+</style>
 </head>
 <body>
 <!-- Decap CMS -->
 <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+<script>
+  // Decap doesn't label the editor with which collection is open, so tag the
+  // page from the URL and let the stylesheet above do the rest.
+  (function () {
+    function tag() {
+      var m = location.hash.match(/collections\/([A-Za-z0-9_-]+)/);
+      document.body.setAttribute('data-collection', m ? m[1] : '');
+    }
+    window.addEventListener('hashchange', tag);
+    tag();
+  })();
+</script>
 </body>
 </html>

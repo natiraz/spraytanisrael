@@ -862,8 +862,12 @@
     // --- links, all rebuilt from the contact fields --------------------
     var wa = digits(data.contact_whatsapp);
     if(wa){
+      // Opens WhatsApp with the first message already typed, in the language of
+      // the page — so the thread starts with a clean sentence rather than
+      // whatever the client improvises.
+      var pre = has(data, 'wa_prefill') ? '?text=' + encodeURIComponent(data.wa_prefill) : '';
       document.querySelectorAll('[data-link="whatsapp"]').forEach(function(a){
-        a.setAttribute('href', 'https://wa.me/' + wa);
+        a.setAttribute('href', 'https://wa.me/' + wa + pre);
       });
     }
     if(has(data, 'contact_phone_dial')){
