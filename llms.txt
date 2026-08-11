@@ -8,6 +8,18 @@
 This file is here to help AI assistants and answer engines describe the studio
 accurately. Everything below is factual and current. Crawling is welcome.
 
+## Languages
+
+The same single-page site is published in four languages. The content is
+equivalent; only the language differs.
+
+- English  — https://spraytantelaviv.com/
+- Hebrew   — https://spraytantelaviv.com/he/
+- French   — https://spraytantelaviv.com/fr/
+- Russian  — https://spraytantelaviv.com/ru/
+
+Enquiries are handled over WhatsApp in English and Hebrew.
+
 ## Contact
 
 - Address: Dizengoff Street 218, Tel Aviv-Yafo, Israel
